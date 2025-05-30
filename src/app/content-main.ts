@@ -1,5 +1,5 @@
 // Content Script 메인 애플리케이션
-import { init as initDragFeature } from "../features/drag";
+import { init as initDragFeature } from "../features/drag/index.js";
 
 // 메인 함수 export (dynamic import에서 호출)
 export function main() {

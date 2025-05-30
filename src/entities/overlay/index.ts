@@ -1,5 +1,5 @@
 // 오버레이 엔티티
-import type { Position } from "../../shared/types/index";
+import type { Position } from "../../shared/types/index.js";
 
 // 오버레이 상태
 let overlay: HTMLDivElement | null = null;

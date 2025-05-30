@@ -1,6 +1,6 @@
 // 드래그 기능 Feature
-import { initDragManager, destroyDragManager, initHoverManager, destroyHoverManager } from "./lib/index";
-import { initExtensionConfig, setOnEnabledChange } from "../../shared/lib/index";
+import { initDragManager, destroyDragManager, initHoverManager, destroyHoverManager } from "./lib/index.js";
+import { initExtensionConfig, setOnEnabledChange } from "../../shared/lib/index.js";
 
 // 드래그 기능 상태
 let isInitialized = false;

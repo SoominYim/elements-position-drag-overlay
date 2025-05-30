@@ -1,8 +1,8 @@
 // 드래그 관리자 (함수형)
-import type { DragState } from "../../../shared/types/index";
-import { createOverlay, updateOverlay, removeOverlay } from "../../../entities/overlay/index";
-import { convertToAbsolutePosition, moveElement } from "../../../shared/lib/position-utils";
-import { isAltKeyPressed, removeHoverHighlight, updateHoverOnScroll } from "./hover-manager";
+import type { DragState } from "../../../shared/types/index.js";
+import { createOverlay, updateOverlay, removeOverlay } from "../../../entities/overlay/index.js";
+import { convertToAbsolutePosition, moveElement } from "../../../shared/lib/position-utils.js";
+import { isAltKeyPressed, removeHoverHighlight, updateHoverOnScroll } from "./hover-manager.js";
 
 // 드래그 상태
 let state: DragState = {
