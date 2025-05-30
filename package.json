@@ -13,6 +13,7 @@
     "build:dev": "node scripts/dev-build.js",
     "build:admin": "npm run build:ts && npm run build:copy",
     "build:ts": "tsc",
+    "build:ts:watch": "tsc --watch",
     "build:copy": "npm run copy:popup && npm run copy:options && npm run copy:icons && npm run copy:html && npm run copy:manifest",
     "copy:popup": "node -e \"require('fs').cpSync('src/popup', 'dist/popup', {recursive: true})\"",
     "copy:options": "node -e \"require('fs').cpSync('src/options', 'dist/options', {recursive: true})\"",
@@ -24,12 +25,10 @@
     "test:run": "vitest run",
     "test:watch": "vitest --watch",
     "svg2png": "node scripts/svg-to-png.js",
-    "dev": "tsc --watch",
+    "dev": "node scripts/dev-server.js",
+    "serve": "node scripts/serve.js",
     "clean": "rimraf dist",
-    "start": "npm run build && npm run serve",
-    "serve": "node -e \"const http=require('http'),fs=require('fs'),path=require('path');const server=http.createServer((req,res)=>{const filePath=path.join('./dist',req.url==='/'?'index.html':req.url);try{const content=fs.readFileSync(filePath);const ext=path.extname(filePath);const contentType=ext==='.js'?'application/javascript':ext==='.css'?'text/css':ext==='.html'?'text/html':'text/plain';res.writeHead(200,{'Content-Type':contentType});res.end(content);}catch{res.writeHead(404);res.end('Not Found');}});server.listen(3000,()=>console.log('🚀 서버 실행: http://localhost:3000'))\"",
-    "serve:python": "cd dist && python -m http.server 8000",
-    "serve:python3": "cd dist && python3 -m http.server 8000"
+    "start": "npm run build && npm run serve"
   },
   "keywords": [
     "chrome-extension",
