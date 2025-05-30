@@ -16,9 +16,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "run_at": "document_idle",
-      "type": "module"
+      "js": ["app/content.js"],
+      "run_at": "document_idle"
     }
   ],
   "action": {
@@ -41,7 +40,16 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["icons/*"],
+      "resources": [
+        "icons/*",
+        "app/content-main.js",
+        "features/drag/index.js",
+        "features/drag/lib/*.js",
+        "entities/overlay/index.js",
+        "shared/lib/*.js",
+        "shared/types/index.js",
+        "widgets/demo-controls/index.js"
+      ],
       "matches": ["<all_urls>"]
     }
   ]

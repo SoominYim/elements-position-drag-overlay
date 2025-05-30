@@ -1,6 +1,6 @@
-// 웹 데모를 위한 진입점 - app/index.ts로 리다이렉트
-import { initForWeb as initDragFeature } from "./features/drag";
-import { init as initDemoWidget } from "./widgets/demo-controls";
+// Web Demo Application Entry Point
+import { initForWeb as initDragFeature } from "../features/drag";
+import { init as initDemoWidget } from "../widgets/demo-controls";
 
 // 웹 데모 초기화
 function initWebDemo() {

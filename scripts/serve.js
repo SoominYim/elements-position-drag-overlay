@@ -20,11 +20,17 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       "Content-Type": contentType,
       "Cache-Control": "no-cache",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
     });
     res.end(content);
-  } catch {
-    res.writeHead(404);
-    res.end("404 - Not Found");
+  } catch (error) {
+    console.log(`❌ File not found: ${filePath}`);
+    res.writeHead(404, {
+      "Content-Type": "application/json",
+    });
+    res.end(JSON.stringify({ error: "File not found", path: req.url }));
   }
 });
 
