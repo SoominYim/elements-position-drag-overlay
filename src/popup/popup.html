@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elements Position Overlay</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎯 EPO</h1>
+        <p>Elements Position Overlay</p>
+      </header>
+
+      <main>
+        <div class="toggle-section">
+          <label class="toggle">
+            <input type="checkbox" id="enableToggle" />
+            <span class="slider"></span>
+          </label>
+          <div class="toggle-info">
+            <h3>오버레이 활성화</h3>
+            <p>Alt+드래그로 요소 위치 확인</p>
+          </div>
+        </div>
+
+        <div class="shortcuts">
+          <h3>🔧 단축키</h3>
+          <div class="shortcut-item">
+            <kbd>Alt + D</kbd>
+            <span>토글 ON/OFF</span>
+          </div>
+          <div class="shortcut-item">
+            <kbd>Alt + 드래그</kbd>
+            <span>요소 이동 & 위치 표시</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="testBtn" class="btn-primary">🚀 웹 데모 열기</button>
+          <button id="optionsBtn" class="btn-secondary">⚙️ 설정</button>
+        </div>
+      </main>
+
+      <footer>
+        <div class="status" id="status">✅ Ready</div>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

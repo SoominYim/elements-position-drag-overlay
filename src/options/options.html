@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elements Position Overlay - 설정</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎯 Elements Position Overlay</h1>
+        <p>설정 및 환경설정</p>
+      </header>
+
+      <main>
+        <section class="settings-group">
+          <h2>기본 설정</h2>
+          <div class="setting-item">
+            <label>
+              <input type="checkbox" id="enableExtension" />
+              <span>확장 기능 활성화</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-group">
+          <h2>오버레이 설정</h2>
+          <div class="setting-item">
+            <label>
+              오버레이 위치:
+              <select id="overlayPosition">
+                <option value="top-right">우측 상단</option>
+                <option value="top-left">좌측 상단</option>
+                <option value="bottom-right">우측 하단</option>
+                <option value="bottom-left">좌측 하단</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-group">
+          <h2>정보</h2>
+          <div class="info-item">
+            <p><strong>버전:</strong> 1.0.0</p>
+            <p><strong>단축키:</strong> Alt + D (토글), Alt + 드래그 (이동)</p>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button id="saveBtn" class="btn-primary">💾 저장</button>
+          <button id="resetBtn" class="btn-secondary">🔄 초기화</button>
+        </div>
+      </main>
+
+      <footer>
+        <div class="status" id="status">⚙️ 설정을 변경하세요</div>
+      </footer>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

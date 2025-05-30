@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Elements Position Overlay DEMO</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        margin: 0;
+        padding: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+      }
+      h1 {
+        color: #3659b5;
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+      .subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 40px;
+      }
+      .demo-area {
+        width: 100%;
+        height: 500px;
+        border: 3px dashed #3659b5;
+        border-radius: 20px;
+        position: relative;
+        margin: 32px 0;
+        background: linear-gradient(45deg, #f7fafd 0%, #e8f4fd 100%);
+        overflow: hidden;
+      }
+      .demo-box {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 16px;
+        position: absolute;
+        left: 60px;
+        top: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: grab;
+        user-select: none;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        transition: transform 0.2s ease;
+      }
+      .demo-box:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+      }
+      .demo-box:active {
+        cursor: grabbing;
+      }
+      .desc {
+        color: #555;
+        margin-bottom: 2em;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        text-align: center;
+        padding: 20px;
+        background: rgba(54, 89, 181, 0.1);
+        border-radius: 12px;
+        border-left: 4px solid #3659b5;
+      }
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+      }
+      .feature {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 12px;
+        border: 1px solid rgba(54, 89, 181, 0.2);
+      }
+      .feature h3 {
+        color: #3659b5;
+        margin-bottom: 10px;
+      }
+      .status {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-family: monospace;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="status" id="status">✅ Ready</div>
+    <div class="container">
+      <h1>🎯 Elements Position Overlay</h1>
+      <div class="subtitle">실시간 CSS Position 오버레이 도구</div>
+
+      <div class="desc">
+        <strong>🚀 사용법:</strong> 아래 박스를 <kbd>Alt + 드래그</kbd>로 이동해보세요!<br />
+        이동 중 CSS 좌표값이 실시간 오버레이로 표시됩니다.<br />
+        <em>(크롬 확장 없이도 동작하는 웹 데모입니다)</em>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>🎨 실시간 Position 표시</h3>
+          <p>드래그하는 동안 left, top, right, bottom 값을 실시간으로 확인</p>
+        </div>
+        <div class="feature">
+          <h3>🔧 개발자 친화적</h3>
+          <p>CSS position 속성과 요소 크기까지 한눈에 파악</p>
+        </div>
+        <div class="feature">
+          <h3>⚡ 빠른 프로토타이핑</h3>
+          <p>UI 레이아웃 조정과 반응형 디자인 작업에 최적화</p>
+        </div>
+      </div>
+
+      <div class="demo-area">
+        <div class="demo-box" id="demoBox">🎯 Demo Box</div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px; color: #666">
+        <p>💡 <strong>크롬 확장으로 설치하면</strong> 모든 웹사이트에서 이 기능을 사용할 수 있습니다!</p>
+      </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

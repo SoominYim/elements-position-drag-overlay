@@ -1,0 +1,25 @@
+dist/
+node_modules/
+.DS_Store
+*.log
+coverage/
+.env
+.env.local
+.vscode/
+.idea/
+
+# Package manager lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnpm-store/
+
+# Yarn specific
+.yarn/
+.yarnrc.yml
+
+# pnpm specific
+.pnpm/
+
+# Bun specific (future support)
+bun.lockb 

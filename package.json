@@ -1,0 +1,66 @@
+{
+  "name": "elements-position-overlay",
+  "version": "1.0.0",
+  "description": "Alt+드래그로 웹 요소 CSS position값을 실시간 오버레이로 보여주는 크롬 확장 및 웹 도구. 개발자, 디자이너, QA를 위한 필수 생산성 툴.",
+  "main": "dist/content.js",
+  "types": "dist/content.d.ts",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "build": "npm run build:ts && npm run build:copy",
+    "build:dev": "node scripts/dev-build.js",
+    "build:admin": "npm run build:ts && npm run build:copy",
+    "build:ts": "tsc",
+    "build:copy": "npm run copy:popup && npm run copy:options && npm run copy:icons && npm run copy:html && npm run copy:manifest",
+    "copy:popup": "node -e \"require('fs').cpSync('src/popup', 'dist/popup', {recursive: true})\"",
+    "copy:options": "node -e \"require('fs').cpSync('src/options', 'dist/options', {recursive: true})\"",
+    "copy:icons": "node -e \"require('fs').cpSync('src/icons', 'dist/icons', {recursive: true})\"",
+    "copy:html": "node -e \"require('fs').copyFileSync('src/index.html', 'dist/index.html')\"",
+    "copy:manifest": "node -e \"require('fs').copyFileSync('manifest.json', 'dist/manifest.json')\"",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:watch": "vitest --watch",
+    "svg2png": "node scripts/svg-to-png.js",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist",
+    "start": "npm run build && npm run serve",
+    "serve": "node -e \"const http=require('http'),fs=require('fs'),path=require('path');const server=http.createServer((req,res)=>{const filePath=path.join('./dist',req.url==='/'?'index.html':req.url);try{const content=fs.readFileSync(filePath);const ext=path.extname(filePath);const contentType=ext==='.js'?'application/javascript':ext==='.css'?'text/css':ext==='.html'?'text/html':'text/plain';res.writeHead(200,{'Content-Type':contentType});res.end(content);}catch{res.writeHead(404);res.end('Not Found');}});server.listen(3000,()=>console.log('🚀 서버 실행: http://localhost:3000'))\"",
+    "serve:python": "cd dist && python -m http.server 8000",
+    "serve:python3": "cd dist && python3 -m http.server 8000"
+  },
+  "keywords": [
+    "chrome-extension",
+    "css",
+    "position",
+    "overlay",
+    "drag",
+    "developer-tools",
+    "webapp",
+    "typescript",
+    "vitest",
+    "multi-package-manager"
+  ],
+  "homepage": "https://github.com/SoominYim/elements-position-drag-overlay",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SoominYim/elements-position-drag-overlay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SoominYim/elements-position-drag-overlay/issues"
+  },
+  "support_url": "https://github.com/SoominYim/elements-position-drag-overlay/issues",
+  "author": "soomin <soo15soo@kakao.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.244",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0",
+    "@vitest/ui": "^1.0.0",
+    "jsdom": "^23.0.0",
+    "sharp": "^0.32.0",
+    "rimraf": "^5.0.0"
+  }
+}
