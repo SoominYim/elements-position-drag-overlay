@@ -188,47 +188,6 @@ serve dist
 - 확장 아이콘 클릭 → 팝업에서 설정 관리
 - 설정 페이지에서 오버레이 위치 변경
 
-## 🏗 프로젝트 구조
-
-```
-elements-position-overlay/
-├── 📄 package.json          # 프로젝트 설정 (다중 패키지 매니저 지원)
-├── 📄 tsconfig.json         # TypeScript 설정
-├── 📄 vitest.config.ts      # Vitest 테스트 설정
-├── 📄 manifest.json         # 크롬 확장 매니페스트 V3
-├── 📄 README.md             # 이 파일
-├── 📄 .gitignore            # Git 무시 파일
-├── 📁 src/
-│   ├── 🎯 content.ts        # 크롬 확장 메인 로직 (컨텐츠 스크립트)
-│   ├── 🔧 background.ts     # 백그라운드 서비스 워커
-│   ├── 🌐 index.html        # 웹 데모 페이지 (아름다운 UI)
-│   ├── ⚡ index.ts          # 웹 데모 TypeScript
-│   ├── ⚡ index.js          # 웹 데모 JavaScript (바로 실행 가능)
-│   ├── 🧪 __tests__/
-│   │   └── dragUtils.test.ts # Vitest 단위 테스트 (통과 ✅)
-│   ├── 🎨 popup/
-│   │   ├── popup.html       # 확장 팝업 UI
-│   │   ├── popup.css        # 팝업 스타일
-│   │   └── popup.ts         # 팝업 로직
-│   ├── ⚙️ options/
-│   │   ├── options.html     # 설정 페이지
-│   │   ├── options.css      # 설정 스타일
-│   │   └── options.ts       # 설정 로직
-│   └── 🎭 icons/
-│       ├── icon.svg         # 메인 아이콘 (EPO 로고 SVG)
-│       ├── icon16.png       # 16x16 PNG (자동 생성)
-│       ├── icon48.png       # 48x48 PNG (자동 생성)
-│       └── icon128.png      # 128x128 PNG (자동 생성)
-├── 📁 scripts/
-│   └── 🔄 svg-to-png.js     # 아이콘 SVG→PNG 변환 스크립트
-├── 📁 dist/                 # 빌드 결과물 (크롬 확장 설치용)
-│   ├── *.js, *.d.ts         # 컴파일된 TypeScript
-│   ├── popup/, options/     # 복사된 UI 파일들
-│   ├── icons/               # 아이콘 파일들
-│   ├── index.html           # 웹 데모
-│   └── manifest.json        # 확장 매니페스트
-└── 📁 node_modules/         # 의존성 (패키지 매니저별로 관리)
-```
 
 ## 🧪 테스트
 
