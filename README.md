@@ -4,7 +4,7 @@
 
 Alt+드래그로 웹 요소의 CSS position(left/top 등) 값을 실시간 오버레이로 보여주는 크롬 확장 및 웹 도구입니다. 개발자, 디자이너, QA를 위한 필수 생산성 툴입니다.
 
-![Demo](https://elements-position-drag-overlay.vercel.app/)
+[Demo](https://elements-position-drag-overlay.vercel.app/)
 
 ## ✨ 주요 기능
 
