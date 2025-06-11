@@ -101,29 +101,20 @@
         color: #3659b5;
         margin-bottom: 10px;
       }
-      .status {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 10px 15px;
-        border-radius: 8px;
-        font-family: monospace;
-        font-size: 12px;
-      }
     </style>
   </head>
   <body>
-    <div class="status" id="status">✅ Ready</div>
     <div class="container">
       <h1>🎯 Elements Position Overlay</h1>
       <div class="subtitle">실시간 CSS Position 오버레이 도구</div>
 
       <div class="desc">
-        <strong>🚀 사용법:</strong> 아래 박스를 <kbd>Alt + 드래그</kbd>로 이동해보세요!<br />
-        이동 중 CSS 좌표값이 실시간 오버레이로 표시됩니다.<br />
-        <em>(크롬 확장 없이도 동작하는 웹 데모입니다)</em>
+        <strong>🚀 사용법:</strong> <kbd>Ctrl + 드래그</kbd>로 요소를 이동해보세요!<br />
+        <strong>⚠️ 제한사항:</strong> <code>position: absolute</code>인 요소만 드래그할 수 있습니다.<br />
+        <strong>📊 테스트:</strong> <span style="color: #27ae60">✅ 녹색 박스(Absolute)</span>는 드래그 가능,
+        <span style="color: #e74c3c">❌ 빨간 박스(Relative)</span>와
+        <span style="color: #f39c12">⚠️ 노란 박스(Static)</span>는 에러 메시지 표시<br />
+        <em>(Ctrl 키는 브라우저 단축키와 겹치지 않아 더 안정적입니다)</em>
       </div>
 
       <div class="features">
@@ -143,6 +134,72 @@
 
       <div class="demo-area">
         <div class="demo-box" id="demoBox">🎯 Demo Box</div>
+
+        <!-- 추가 테스트 요소들 -->
+        <div
+          style="
+            position: relative;
+            left: 250px;
+            top: 120px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: grab;
+            user-select: none;
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+          "
+        >
+          📍 Relative
+        </div>
+
+        <div
+          style="
+            position: absolute;
+            left: 400px;
+            top: 200px;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: grab;
+            user-select: none;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+          "
+        >
+          ✅ Absolute
+        </div>
+
+        <div
+          style="
+            position: static;
+            margin: 300px 0 0 150px;
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: grab;
+            user-select: none;
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3);
+          "
+        >
+          ⚠️ Static
+        </div>
       </div>
 
       <div style="text-align: center; margin-top: 40px; color: #666">

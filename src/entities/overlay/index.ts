@@ -52,8 +52,7 @@ export function updateOverlay(elem: HTMLElement): void {
     `left: ${pos.left}px\n` +
     `top: ${pos.top}px\n` +
     `right: ${Math.round(pos.right)}px\n` +
-    `bottom: ${Math.round(pos.bottom)}px\n` +
-    `position: ${pos.position}`;
+    `bottom: ${Math.round(pos.bottom)}px`;
 }
 
 // 오버레이 제거
