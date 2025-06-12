@@ -279,6 +279,8 @@
       }
 
       .demo-preview-content {
+        position: absolute;
+        pointer-events: none;
         text-align: center;
         color: #6c757d;
       }
@@ -333,8 +335,8 @@
         height: 100px;
         background: linear-gradient(135deg, #4fc08d 0%, #41b883 100%);
         border-radius: 12px;
-        top: 50%;
-        left: 50%;
+        top: 30%;
+        left: 80%;
         transform: translate(-50%, -50%);
         display: flex;
         align-items: center;
@@ -343,6 +345,19 @@
         font-weight: 600;
         box-shadow: 0 8px 25px rgba(79, 192, 141, 0.3);
         animation: float 3s ease-in-out infinite;
+        opacity: 0.9;
+      }
+
+      .mock-element.static {
+        position: static;
+        background: #8330e1;
+        margin-bottom: 110px;
+      }
+      .mock-element.relative {
+        position: relative;
+        background: #f62626;
+        top: 28%;
+        left: -35%;
       }
 
       @keyframes float {
@@ -579,11 +594,13 @@
       </div>
 
       <div class="demo-preview">
-        <div id="demo-element" class="mock-element">🎯 Element</div>
         <div class="demo-preview-content">
           <h3>실시간 Position 오버레이 미리보기</h3>
           <p>실제 확장에서는 Ctrl+드래그(Mac: Cmd+드래그)로 요소를 이동하며<br />실시간으로 좌표가 업데이트됩니다</p>
         </div>
+        <div id="demo-element" class="mock-element">🎯 absolute</div>
+        <div id="demo-element" class="mock-element static">🎯 static</div>
+        <div id="demo-element" class="mock-element relative">🎯 relative</div>
       </div>
 
       <div class="usage-guide">

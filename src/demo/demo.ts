@@ -104,7 +104,7 @@ function initDemoDragSystem() {
     if (target.id !== "demo-element") return; // 데모 요소만 드래그 가능하도록 제한
 
     if (!isAbsolutePosition(target)) {
-      showToast(`This element is not position:absolute`, "error");
+      showToast(`❌ 드래그 불가능! 이 요소는 position: ${getComputedStyle(target).position}입니다`, "error");
       return;
     }
 
