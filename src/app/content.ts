@@ -306,7 +306,8 @@ function initDragSystem() {
 
   // 마우스 다운 이벤트
   function onMouseDown(e: MouseEvent) {
-    if (!currentSettings.enabled || !e.ctrlKey) return;
+    // Windows: Ctrl, Mac: Cmd 키 지원
+    if (!currentSettings.enabled || (!e.ctrlKey && !e.metaKey)) return;
 
     const target = e.target as HTMLElement;
     if (!target || target === document.body || target === document.documentElement) return;
@@ -376,8 +377,8 @@ function initDragSystem() {
 
       // 오버레이 업데이트
       updateOverlay(currentElement);
-    } else if (!isDragging && e.ctrlKey) {
-      // 호버 상태 관리
+    } else if (!isDragging && (e.ctrlKey || e.metaKey)) {
+      // 호버 상태 관리 - Windows: Ctrl, Mac: Cmd 키 지원
       const target = e.target as HTMLElement;
       if (target && target !== hoveredElement && isAbsolutePosition(target)) {
         if (hoveredElement) {
@@ -443,7 +444,8 @@ function initDragSystem() {
   function onKeyUp(e: KeyboardEvent) {
     if (!currentSettings.enabled) return;
 
-    if (e.key === "Control" && hoveredElement && !isDragging) {
+    // Windows: Ctrl, Mac: Cmd 키 지원
+    if ((e.key === "Control" || e.key === "Meta") && hoveredElement && !isDragging) {
       removeHighlight(hoveredElement);
       hoveredElement = null;
       isHovering = false;

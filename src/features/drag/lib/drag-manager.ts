@@ -18,7 +18,8 @@ let state: DragState = {
 
 // 마우스 다운 핸들러
 function onMouseDown(e: MouseEvent): void {
-  if (!e.ctrlKey) return;
+  // Windows: Ctrl, Mac: Cmd 키 지원
+  if (!e.ctrlKey && !e.metaKey) return;
 
   // 이미 드래그 중이면 새로운 요소 선택 방지
   if (state.isDragging) {
@@ -77,60 +78,66 @@ function onMouseDown(e: MouseEvent): void {
 
 // 마우스 이동 핸들러
 function onMouseMove(e: MouseEvent): void {
-  // 드래그 처리
-  if (!state.draggedElem || !state.isDragging || !state.startParentRect) return;
+  if (!state.isDragging || !state.draggedElem || !state.startParentRect) return;
 
-  // 현재 스크롤 위치 변화량 계산
+  // 스크롤 변화량 계산
   const scrollDeltaX = window.scrollX - state.lastScrollX;
   const scrollDeltaY = window.scrollY - state.lastScrollY;
 
-  // startParentRect를 스크롤 변화량만큼 보정
-  const adjustedParentRect = {
-    ...state.startParentRect,
+  // 부모 요소의 현재 위치 (스크롤 보정)
+  const currentParentRect = {
     left: state.startParentRect.left - scrollDeltaX,
     top: state.startParentRect.top - scrollDeltaY,
   };
 
-  // 보정된 부모 rect 기준으로 새 위치 계산
-  const left = e.clientX - adjustedParentRect.left - state.offsetX;
-  const top = e.clientY - adjustedParentRect.top - state.offsetY;
+  // 마우스 위치를 부모 기준 좌표로 변환
+  const newLeft = e.clientX - currentParentRect.left - state.offsetX;
+  const newTop = e.clientY - currentParentRect.top - state.offsetY;
 
-  moveElement(state.draggedElem, left, top);
+  // 요소 이동
+  moveElement(state.draggedElem, newLeft, newTop);
+
+  // 오버레이 업데이트
   updateOverlay(state.draggedElem);
 }
 
 // 마우스 업 핸들러
-function onMouseUp(): void {
-  if (state.draggedElem && state.isDragging) {
-    state.draggedElem.style.cursor = "";
-    updateOverlay(state.draggedElem);
+function onMouseUp(e: MouseEvent): void {
+  if (!state.isDragging || !state.draggedElem) return;
 
-    // 드래그 완료 토스트 표시
-    showToast("드래그 완료", "success");
-  }
+  // 드래그 상태 해제
+  setDraggingState(false);
+  state.isDragging = false;
 
+  // 스타일 복원
+  state.draggedElem.style.cursor = "";
   document.body.style.userSelect = "";
 
-  // 드래그 상태만 해제하고 draggedElem은 유지 (오버레이 지속을 위해)
-  const lastDraggedElem = state.draggedElem;
+  // 성공 토스트 표시
+  showToast("✅ 드래그 완료", "success");
+
+  // 상태 초기화
   state.draggedElem = null;
-  state.isDragging = false;
   state.startParentRect = null;
-
-  // 드래그 종료 상태를 호버 매니저에 알림
-  setDraggingState(false);
-
-  // 오버레이는 즉시 제거하지 않음 - 다른 요소 선택 시에만 제거
 }
 
 // 스크롤 핸들러
 function onScroll(): void {
-  // 호버 하이라이트를 스크롤에 맞춰 업데이트
+  if (state.isDragging && state.draggedElem) {
+    updateOverlay(state.draggedElem);
+  }
   updateHoverOnScroll();
+}
 
-  // 스크롤 위치 업데이트 (마우스 이동 핸들러에서 사용)
-  state.lastScrollX = window.scrollX;
-  state.lastScrollY = window.scrollY;
+// 키보드 핸들러
+function onKeyDown(e: KeyboardEvent): void {
+  if (e.key === "Escape") {
+    if (state.isDragging) {
+      // 드래그 중이면 취소
+      onMouseUp(new MouseEvent("mouseup"));
+    }
+    removeOverlay();
+  }
 }
 
 // 드래그 매니저 초기화
@@ -139,6 +146,7 @@ export function initDragManager(): void {
   document.addEventListener("mousemove", onMouseMove, true);
   document.addEventListener("mouseup", onMouseUp, true);
   document.addEventListener("scroll", onScroll, true);
+  document.addEventListener("keydown", onKeyDown, true);
 }
 
 // 드래그 매니저 정리
@@ -147,20 +155,16 @@ export function destroyDragManager(): void {
   document.removeEventListener("mousemove", onMouseMove, true);
   document.removeEventListener("mouseup", onMouseUp, true);
   document.removeEventListener("scroll", onScroll, true);
-
-  removeOverlay();
-
-  // 호버 매니저 드래그 상태 초기화
-  setDraggingState(false);
+  document.removeEventListener("keydown", onKeyDown, true);
 
   // 상태 초기화
-  state = {
-    isDragging: false,
-    draggedElem: null,
-    offsetX: 0,
-    offsetY: 0,
-    startParentRect: null,
-    lastScrollX: window.scrollX,
-    lastScrollY: window.scrollY,
-  };
+  if (state.isDragging && state.draggedElem) {
+    state.draggedElem.style.cursor = "";
+    document.body.style.userSelect = "";
+  }
+
+  state.isDragging = false;
+  state.draggedElem = null;
+  state.startParentRect = null;
+  setDraggingState(false);
 }

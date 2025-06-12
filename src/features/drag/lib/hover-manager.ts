@@ -17,53 +17,55 @@ export function setDraggingState(dragging: boolean): void {
 }
 
 // 호버 하이라이트 생성
-export function createHoverHighlight(): void {
+function createHoverHighlight(): void {
   if (hoverHighlight) return;
 
   hoverHighlight = document.createElement("div");
+  hoverHighlight.id = "drag-hover-highlight";
   hoverHighlight.style.cssText = `
     position: absolute;
     pointer-events: none;
+    z-index: 99999;
     border: 2px solid #667eea;
     background: rgba(102, 126, 234, 0.1);
-    z-index: 99998;
     border-radius: 4px;
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
-    transition: all 0.15s ease;
     display: none;
+    transition: all 0.1s ease;
   `;
   document.body.appendChild(hoverHighlight);
 }
 
 // 호버 하이라이트 업데이트
-export function updateHoverHighlight(elem: HTMLElement): void {
+function updateHoverHighlight(target: HTMLElement): void {
   if (!hoverHighlight) return;
 
-  const rect = elem.getBoundingClientRect();
-  hoverHighlight.style.left = rect.left + window.scrollX + "px";
-  hoverHighlight.style.top = rect.top + window.scrollY + "px";
-  hoverHighlight.style.width = rect.width + "px";
-  hoverHighlight.style.height = rect.height + "px";
+  const rect = target.getBoundingClientRect();
+  const scrollX = window.scrollX;
+  const scrollY = window.scrollY;
+
   hoverHighlight.style.display = "block";
+  hoverHighlight.style.left = `${rect.left + scrollX}px`;
+  hoverHighlight.style.top = `${rect.top + scrollY}px`;
+  hoverHighlight.style.width = `${rect.width}px`;
+  hoverHighlight.style.height = `${rect.height}px`;
 }
 
 // 호버 하이라이트 제거
-export function removeHoverHighlight(): void {
+function removeHoverHighlight(): void {
   if (hoverHighlight) {
     hoverHighlight.style.display = "none";
   }
-  hoveredElem = null;
 }
 
-// 호버 하이라이트 파괴
-export function destroyHoverHighlight(): void {
-  if (hoverHighlight?.parentNode) {
-    hoverHighlight.parentNode.removeChild(hoverHighlight);
+// 호버 하이라이트 완전 제거
+function destroyHoverHighlight(): void {
+  if (hoverHighlight) {
+    hoverHighlight.remove();
     hoverHighlight = null;
   }
 }
 
-// Ctrl 키 상태 설정 (Alt -> Ctrl 변경)
+// Ctrl/Cmd 키 상태 설정
 export function setCtrlPressed(pressed: boolean): void {
   isCtrlPressed = pressed;
   if (!pressed) {
@@ -71,14 +73,14 @@ export function setCtrlPressed(pressed: boolean): void {
   }
 }
 
-// Ctrl 키 상태 확인 (Alt -> Ctrl 변경)
+// Ctrl/Cmd 키 상태 확인
 export function isCtrlKeyPressed(): boolean {
   return isCtrlPressed;
 }
 
 // 마우스 오버 처리
 export function handleMouseOver(target: HTMLElement): void {
-  // Ctrl 키가 눌리지 않았거나 드래그 중이면 처리하지 않음
+  // Ctrl/Cmd 키가 눌리지 않았거나 드래그 중이면 처리하지 않음
   if (!isCtrlPressed || isDraggingFromOtherModule) return;
 
   // 유효하지 않은 타겟 제외
@@ -102,7 +104,8 @@ export function updateHoverOnScroll(): void {
 
 // 이벤트 핸들러들
 function onKeyDown(e: KeyboardEvent): void {
-  if (e.key === "Control" && !isDraggingFromOtherModule) {
+  // Windows: Ctrl, Mac: Cmd 키 지원
+  if ((e.key === "Control" || e.key === "Meta") && !isDraggingFromOtherModule) {
     setCtrlPressed(true);
     createHoverHighlight();
     // 브라우저 기본 동작 방지
@@ -111,22 +114,21 @@ function onKeyDown(e: KeyboardEvent): void {
 }
 
 function onKeyUp(e: KeyboardEvent): void {
-  if (e.key === "Control") {
+  // Windows: Ctrl, Mac: Cmd 키 지원
+  if (e.key === "Control" || e.key === "Meta") {
     setCtrlPressed(false);
-  }
-}
-
-function onMouseMove(e: MouseEvent): void {
-  // 마우스 이동 시에도 호버 처리 (더 반응성 향상)
-  if (!isDraggingFromOtherModule) {
-    const target = e.target as HTMLElement;
-    handleMouseOver(target);
   }
 }
 
 function onMouseOver(e: MouseEvent): void {
   const target = e.target as HTMLElement;
   handleMouseOver(target);
+}
+
+function onMouseMove(e: MouseEvent): void {
+  if (isCtrlPressed && hoveredElem && hoverHighlight && !isDraggingFromOtherModule) {
+    updateHoverHighlight(hoveredElem);
+  }
 }
 
 // 호버 매니저 초기화
@@ -149,3 +151,6 @@ export function destroyHoverManager(): void {
   hoveredElem = null;
   isDraggingFromOtherModule = false;
 }
+
+// 호버 하이라이트 제거 (외부에서 호출)
+export { removeHoverHighlight };

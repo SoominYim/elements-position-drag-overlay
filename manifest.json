@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Elements Position Overlay",
-  "description": "Alt+드래그로 웹 요소의 CSS position(left/top 등) 값을 실시간 오버레이로 표시하는 개발자 도구. 반응형 디자인, UI/UX 개발, QA 테스트에 필수적인 생산성 도구입니다.",
+  "description": "Ctrl+드래그(Mac: Cmd+드래그)로 웹 요소의 CSS position 값을 실시간으로 표시하는 개발자 도구입니다.",
   "version": "1.0.0",
   "icons": {
     "16": "icons/icon16.png",
@@ -32,10 +32,10 @@
   "commands": {
     "toggle-drag-overlay": {
       "suggested_key": {
-        "default": "Alt+D",
-        "mac": "Alt+D"
+        "default": "Ctrl+Shift+D",
+        "mac": "Command+Shift+D"
       },
-      "description": "Drag Overlay On/Off 토글"
+      "description": "Position Overlay On/Off 토글 (Windows: Ctrl+Shift+D, Mac: Cmd+Shift+D)"
     }
   },
   "web_accessible_resources": [

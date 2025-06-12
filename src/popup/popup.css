@@ -1,3 +1,10 @@
+/* 
+ * Elements Position Drag Overlay - Popup Styles
+ * Created by 수민 (Soomin) - 2024
+ * All rights reserved. Unauthorized modification is prohibited.
+ * 제작자: 수민 - 무단 수정 금지
+ */
+
 * {
   margin: 0;
   padding: 0;
@@ -256,6 +263,35 @@ footer {
   padding: 15px 20px;
   background: #f8f9fa;
   border-top: 1px solid #e9ecef;
+}
+
+.creator-info {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.creator-text {
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: 600;
+  position: relative;
+}
+
+.creator-text::after {
+  content: " 🔒";
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.version {
+  font-size: 11px;
+  color: #adb5bd;
+  font-weight: 500;
+  background: rgba(79, 192, 141, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
 .status {

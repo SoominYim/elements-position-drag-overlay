@@ -190,11 +190,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("keydown", e => {
-    if (e.ctrlKey && e.key === "s") {
+    // Windows: Ctrl+S, Mac: Cmd+S
+    if ((e.ctrlKey || e.metaKey) && e.key === "s") {
       e.preventDefault();
       saveOptionsSettings();
     }
-    if (e.ctrlKey && e.key === "r") {
+    // Windows: Ctrl+R, Mac: Cmd+R
+    if ((e.ctrlKey || e.metaKey) && e.key === "r") {
       e.preventDefault();
       resetOptionsSettings();
     }

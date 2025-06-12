@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>Elements Position Overlay - 크롬 확장</title>
+    <title>Elements Position Drag Overlay - 개발자 도구</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
       * {
@@ -148,11 +148,33 @@
         transform: rotate(-180deg) scale(0.8);
       }
 
+      /* 헤더 섹션 */
+      .header-section {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px 0;
+      }
+
+      .app-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        display: block;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(79, 192, 141, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .app-icon:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 35px rgba(79, 192, 141, 0.4);
+      }
+
       h1 {
         color: #2c3e50;
         text-align: center;
         font-size: 3.2rem;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-weight: 700;
         background: linear-gradient(135deg, #4fc08d 0%, #41b883 100%);
         -webkit-background-clip: text;
@@ -542,8 +564,11 @@
         <div class="moon-icon theme-icon"></div>
       </button>
 
-      <h1>🎯 Elements Position Overlay</h1>
-      <div class="subtitle">웹 개발자를 위한 실시간 CSS Position 도구</div>
+      <div class="header-section">
+        <img src="app-icon.png" alt="App Icon" class="app-icon" />
+        <h1>Elements Position Drag Overlay</h1>
+      </div>
+      <div class="subtitle">웹 개발자를 위한 실시간 CSS Position 도구 (Windows/Mac 지원)</div>
 
       <div class="hero-section">
         <h2>🚀 크롬 확장으로 모든 웹사이트에서 사용하세요!</h2>
@@ -558,7 +583,7 @@
         <div class="mock-element">🎯 Element</div>
         <div class="demo-preview-content">
           <h3>실시간 Position 오버레이 미리보기</h3>
-          <p>실제 확장에서는 Ctrl+드래그로 요소를 이동하며<br />실시간으로 좌표가 업데이트됩니다</p>
+          <p>실제 확장에서는 Ctrl+드래그(Mac: Cmd+드래그)로 요소를 이동하며<br />실시간으로 좌표가 업데이트됩니다</p>
         </div>
       </div>
 
@@ -568,7 +593,7 @@
           <div class="usage-step-number">1</div>
           <div class="usage-step-content">
             <strong>크롬 확장 설치</strong><br />
-            크롬 웹 스토어에서 Elements Position Overlay를 설치합니다
+            크롬 웹 스토어에서 Elements Position Drag Overlay를 설치합니다
           </div>
         </div>
         <div class="usage-step">
@@ -582,7 +607,7 @@
           <div class="usage-step-number">3</div>
           <div class="usage-step-content">
             <strong>드래그 시작</strong><br />
-            <kbd>Ctrl + 드래그</kbd>로 position: absolute인 요소를 이동합니다
+            <kbd>Ctrl + 드래그</kbd> (Mac: <kbd>Cmd + 드래그</kbd>)로 position: absolute인 요소를 이동합니다
           </div>
         </div>
         <div class="usage-step">
@@ -623,8 +648,11 @@
 
       <div class="footer-cta">
         <h3>🎉 지금 바로 시작하세요!</h3>
-        <p>Elements Position Overlay를 설치하고 웹 개발 효율성을 높여보세요</p>
-        <a href="#" class="install-button" onclick="alert('크롬 웹 스토어에서 Elements Position Overlay를 검색하세요!')"
+        <p>Elements Position Drag Overlay를 설치하고 웹 개발 효율성을 높여보세요</p>
+        <a
+          href="#"
+          class="install-button"
+          onclick="alert('크롬 웹 스토어에서 Elements Position Drag Overlay를 검색하세요!')"
           >📦 무료로 설치하기</a
         >
       </div>
