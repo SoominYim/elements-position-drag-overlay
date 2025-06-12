@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Elements Position Drag Overlay",
-  "description": "Ctrl+드래그(Mac: Cmd+드래그)로 웹 요소의 CSS position 값을 실시간으로 표시하는 개발자 도구입니다.",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
   "version": "1.0.0",
+  "default_locale": "en",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -35,7 +36,7 @@
         "default": "Ctrl+Shift+Q",
         "mac": "Command+Shift+Q"
       },
-      "description": "On/Off 토글 (Windows: Ctrl+Shift+Q, Mac: Cmd+Shift+Q)"
+      "description": "__MSG_toggleCommandDescription__"
     }
   },
   "web_accessible_resources": [

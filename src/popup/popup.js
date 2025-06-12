@@ -2,11 +2,45 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Popup script loaded");
 
+  // 안전한 탭 메시지 전송 함수
+  async function sendMessageToActiveTab(message, callback) {
+    try {
+      const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (tabs[0]?.id) {
+        // 탭 정보 확인
+        const tab = tabs[0];
+        if (
+          tab.url?.startsWith("chrome://") ||
+          tab.url?.startsWith("chrome-extension://") ||
+          tab.url?.startsWith("about:") ||
+          tab.url?.startsWith("file://")
+        ) {
+          console.log("Cannot send message to this page:", tab.url);
+          return;
+        }
+
+        chrome.tabs.sendMessage(tab.id, message, response => {
+          if (chrome.runtime.lastError) {
+            console.log("Could not send message to content script:", chrome.runtime.lastError.message);
+            return;
+          }
+          if (callback) callback(response);
+        });
+      }
+    } catch (error) {
+      console.log("Error sending message to tab:", error.message);
+    }
+  }
+
   // 홈페이지 버튼
   const indexBtn = document.getElementById("indexBtn");
   if (indexBtn) {
     indexBtn.addEventListener("click", () => {
       chrome.runtime.sendMessage({ action: "openIndexPage" }, response => {
+        if (chrome.runtime.lastError) {
+          console.log("Could not send message to background:", chrome.runtime.lastError.message);
+          return;
+        }
         if (response?.success) {
           window.close(); // 팝업 닫기
         }
@@ -19,6 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (optionsBtn) {
     optionsBtn.addEventListener("click", () => {
       chrome.runtime.sendMessage({ action: "openOptionsPage" }, response => {
+        if (chrome.runtime.lastError) {
+          console.log("Could not send message to background:", chrome.runtime.lastError.message);
+          return;
+        }
         if (response?.success) {
           window.close(); // 팝업 닫기
         }
@@ -96,20 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
       updateStatus(settings.enabled);
 
       // 활성 탭에 설정 변경 알림
-      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-        if (tabs[0]?.id) {
-          chrome.tabs.sendMessage(
-            tabs[0].id,
-            {
-              action: "settingsChanged",
-              settings: settings,
-            },
-            response => {
-              console.log("Settings sent to content script:", response);
-            }
-          );
+      sendMessageToActiveTab(
+        {
+          action: "settingsChanged",
+          settings: settings,
+        },
+        response => {
+          console.log("Settings sent to content script:", response);
         }
-      });
+      );
     });
   }
 

@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "Elements Position Drag Overlay",
+    "description": "扩展程序名称"
+  },
+  "extensionDescription": {
+    "message": "通过Ctrl+拖拽（Mac：Cmd+拖拽）实时显示网页元素CSS position值的开发者工具。",
+    "description": "扩展程序描述"
+  },
+  "toggleCommandDescription": {
+    "message": "Elements Position Drag Overlay 开/关切换（Windows：Ctrl+Shift+Q，Mac：Cmd+Shift+Q）",
+    "description": "切换快捷键描述"
+  },
+  "popupTitle": {
+    "message": "Elements Position Overlay",
+    "description": "弹窗标题"
+  },
+  "enabledStatus": {
+    "message": "✅ 已启用",
+    "description": "扩展功能已启用状态"
+  },
+  "disabledStatus": {
+    "message": "⏸️ 已禁用",
+    "description": "扩展功能已禁用状态"
+  },
+  "basicSettings": {
+    "message": "基本设置",
+    "description": "基本设置部分标题"
+  },
+  "enableExtension": {
+    "message": "启用扩展功能",
+    "description": "启用扩展功能复选框标签"
+  },
+  "showToasts": {
+    "message": "显示提示消息",
+    "description": "显示提示消息复选框标签"
+  },
+  "showHoverHighlight": {
+    "message": "显示悬停高亮",
+    "description": "显示悬停高亮复选框标签"
+  },
+  "persistOverlay": {
+    "message": "拖拽后保持坐标显示",
+    "description": "持续覆盖层复选框标签"
+  },
+  "overlaySettings": {
+    "message": "覆盖层设置",
+    "description": "覆盖层设置部分标题"
+  },
+  "overlayPosition": {
+    "message": "坐标位置",
+    "description": "覆盖层位置选择标签"
+  },
+  "highlightColor": {
+    "message": "高亮颜色",
+    "description": "高亮颜色选择标签"
+  },
+  "usageInstructions": {
+    "message": "Ctrl+拖拽（Mac：Cmd+拖拽）移动元素",
+    "description": "使用说明"
+  },
+  "homepageButton": {
+    "message": "🏠 主页",
+    "description": "主页按钮文本"
+  },
+  "advancedSettingsButton": {
+    "message": "⚙️ 高级设置",
+    "description": "高级设置按钮文本"
+  },
+  "positionTopLeft": {
+    "message": "左上",
+    "description": "左上位置选项"
+  },
+  "positionTopRight": {
+    "message": "右上",
+    "description": "右上位置选项"
+  },
+  "positionBottomLeft": {
+    "message": "左下",
+    "description": "左下位置选项"
+  },
+  "positionBottomRight": {
+    "message": "右下",
+    "description": "右下位置选项"
+  }
+}

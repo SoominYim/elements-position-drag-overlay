@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "Elements Position Drag Overlay",
+    "description": "拡張機能の名前"
+  },
+  "extensionDescription": {
+    "message": "Ctrl+ドラッグ（Mac：Cmd+ドラッグ）でウェブ要素のCSS position値をリアルタイムで表示する開発者ツールです。",
+    "description": "拡張機能の説明"
+  },
+  "toggleCommandDescription": {
+    "message": "Elements Position Drag Overlay オン/オフ切り替え（Windows：Ctrl+Shift+Q、Mac：Cmd+Shift+Q）",
+    "description": "トグルショートカットの説明"
+  },
+  "popupTitle": {
+    "message": "Elements Position Overlay",
+    "description": "ポップアップのタイトル"
+  },
+  "enabledStatus": {
+    "message": "✅ 有効",
+    "description": "拡張機能が有効な状態"
+  },
+  "disabledStatus": {
+    "message": "⏸️ 無効",
+    "description": "拡張機能が無効な状態"
+  },
+  "basicSettings": {
+    "message": "基本設定",
+    "description": "基本設定セクションのタイトル"
+  },
+  "enableExtension": {
+    "message": "拡張機能を有効にする",
+    "description": "拡張機能有効化チェックボックスのラベル"
+  },
+  "showToasts": {
+    "message": "トーストメッセージを表示",
+    "description": "トーストメッセージ表示チェックボックスのラベル"
+  },
+  "showHoverHighlight": {
+    "message": "ホバーハイライトを表示",
+    "description": "ホバーハイライト表示チェックボックスのラベル"
+  },
+  "persistOverlay": {
+    "message": "ドラッグ後に座標を保持",
+    "description": "オーバーレイ持続チェックボックスのラベル"
+  },
+  "overlaySettings": {
+    "message": "オーバーレイ設定",
+    "description": "オーバーレイ設定セクションのタイトル"
+  },
+  "overlayPosition": {
+    "message": "座標位置",
+    "description": "オーバーレイ位置選択のラベル"
+  },
+  "highlightColor": {
+    "message": "ハイライト色",
+    "description": "ハイライト色選択のラベル"
+  },
+  "usageInstructions": {
+    "message": "Ctrl+ドラッグ（Mac：Cmd+ドラッグ）で要素を移動",
+    "description": "使用方法の案内"
+  },
+  "homepageButton": {
+    "message": "🏠 ホームページ",
+    "description": "ホームページボタンのテキスト"
+  },
+  "advancedSettingsButton": {
+    "message": "⚙️ 詳細設定",
+    "description": "詳細設定ボタンのテキスト"
+  },
+  "positionTopLeft": {
+    "message": "左上",
+    "description": "左上位置のオプション"
+  },
+  "positionTopRight": {
+    "message": "右上",
+    "description": "右上位置のオプション"
+  },
+  "positionBottomLeft": {
+    "message": "左下",
+    "description": "左下位置のオプション"
+  },
+  "positionBottomRight": {
+    "message": "右下",
+    "description": "右下位置のオプション"
+  }
+}

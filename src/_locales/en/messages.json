@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "Elements Position Drag Overlay",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Drag elements with Ctrl+drag to see real-time CSS position values. Essential developer tool for web development.",
+    "description": "Description of the extension"
+  },
+  "toggleCommandDescription": {
+    "message": "Toggle Elements Position Drag Overlay On/Off (Windows: Ctrl+Shift+Q, Mac: Cmd+Shift+Q)",
+    "description": "Description for toggle keyboard shortcut"
+  },
+  "popupTitle": {
+    "message": "Elements Position Overlay",
+    "description": "Title in popup"
+  },
+  "enabledStatus": {
+    "message": "✅ Enabled",
+    "description": "Status when extension is enabled"
+  },
+  "disabledStatus": {
+    "message": "⏸️ Disabled",
+    "description": "Status when extension is disabled"
+  },
+  "basicSettings": {
+    "message": "Basic Settings",
+    "description": "Basic settings section title"
+  },
+  "enableExtension": {
+    "message": "Enable Extension",
+    "description": "Enable extension checkbox label"
+  },
+  "showToasts": {
+    "message": "Show Toast Messages",
+    "description": "Show toast messages checkbox label"
+  },
+  "showHoverHighlight": {
+    "message": "Show Hover Highlight",
+    "description": "Show hover highlight checkbox label"
+  },
+  "persistOverlay": {
+    "message": "Keep Coordinates After Drag",
+    "description": "Persist overlay checkbox label"
+  },
+  "overlaySettings": {
+    "message": "Overlay Settings",
+    "description": "Overlay settings section title"
+  },
+  "overlayPosition": {
+    "message": "Coordinates Position",
+    "description": "Overlay position select label"
+  },
+  "highlightColor": {
+    "message": "Highlight Color",
+    "description": "Highlight color select label"
+  },
+  "usageInstructions": {
+    "message": "Ctrl+Drag (Mac: Cmd+Drag) to move elements",
+    "description": "Usage instructions"
+  },
+  "homepageButton": {
+    "message": "🏠 Homepage",
+    "description": "Homepage button text"
+  },
+  "advancedSettingsButton": {
+    "message": "⚙️ Advanced Settings",
+    "description": "Advanced settings button text"
+  },
+  "positionTopLeft": {
+    "message": "Top Left",
+    "description": "Top left position option"
+  },
+  "positionTopRight": {
+    "message": "Top Right",
+    "description": "Top right position option"
+  },
+  "positionBottomLeft": {
+    "message": "Bottom Left",
+    "description": "Bottom left position option"
+  },
+  "positionBottomRight": {
+    "message": "Bottom Right",
+    "description": "Bottom right position option"
+  }
+}

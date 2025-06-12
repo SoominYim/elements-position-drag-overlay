@@ -1,6 +1,31 @@
 // 백그라운드 스크립트
 console.log("Elements Position Drag Overlay - Background script loaded");
 
+// 안전한 메시지 전송 함수
+async function sendMessageSafely(tabId: number, message: any) {
+  try {
+    // 탭 상태 확인
+    const tab = await chrome.tabs.get(tabId);
+
+    // content script가 작동하지 않는 URL들 체크
+    if (
+      tab.url?.startsWith("chrome://") ||
+      tab.url?.startsWith("chrome-extension://") ||
+      tab.url?.startsWith("about:") ||
+      tab.url?.startsWith("file://") ||
+      tab.url?.startsWith("moz-extension://")
+    ) {
+      console.log("Cannot inject content script on this page:", tab.url);
+      return;
+    }
+
+    // 메시지 전송
+    await chrome.tabs.sendMessage(tabId, message);
+  } catch (error: any) {
+    console.log("Could not send message to content script:", error.message);
+  }
+}
+
 // 확장 프로그램 설치/업데이트 시 실행
 chrome.runtime.onInstalled.addListener(details => {
   console.log("Extension installed/updated:", details.reason);
@@ -19,7 +44,7 @@ chrome.commands.onCommand.addListener(command => {
     // 현재 활성 탭에 메시지 전송
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       if (tabs[0]?.id) {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "toggle" });
+        sendMessageSafely(tabs[0].id, { action: "toggle" });
       }
     });
   }
@@ -45,6 +70,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // 확장 아이콘 클릭 처리
 chrome.action.onClicked.addListener(tab => {
   if (tab.id) {
-    chrome.tabs.sendMessage(tab.id, { action: "toggle" });
+    sendMessageSafely(tab.id, { action: "toggle" });
   }
 });

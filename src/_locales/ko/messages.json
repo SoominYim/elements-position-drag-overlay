@@ -1,0 +1,86 @@
+{
+  "extensionName": {
+    "message": "Elements Position Drag Overlay",
+    "description": "확장 프로그램 이름"
+  },
+  "extensionDescription": {
+    "message": "Ctrl+드래그(Mac: Cmd+드래그)로 웹 요소의 CSS position 값을 실시간으로 표시하는 개발자 도구입니다.",
+    "description": "확장 프로그램 설명"
+  },
+  "toggleCommandDescription": {
+    "message": "Elements Position Drag Overlay On/Off 토글 (Windows: Ctrl+Shift+Q, Mac: Cmd+Shift+Q)",
+    "description": "토글 단축키 설명"
+  },
+  "popupTitle": {
+    "message": "Elements Position Overlay",
+    "description": "팝업 제목"
+  },
+  "enabledStatus": {
+    "message": "✅ 활성화됨",
+    "description": "확장 기능이 활성화된 상태"
+  },
+  "disabledStatus": {
+    "message": "⏸️ 비활성화됨",
+    "description": "확장 기능이 비활성화된 상태"
+  },
+  "basicSettings": {
+    "message": "기본 설정",
+    "description": "기본 설정 섹션 제목"
+  },
+  "enableExtension": {
+    "message": "확장 기능 활성화",
+    "description": "확장 기능 활성화 체크박스 라벨"
+  },
+  "showToasts": {
+    "message": "토스트 메시지 표시",
+    "description": "토스트 메시지 표시 체크박스 라벨"
+  },
+  "showHoverHighlight": {
+    "message": "호버 하이라이트 표시",
+    "description": "호버 하이라이트 표시 체크박스 라벨"
+  },
+  "persistOverlay": {
+    "message": "드래그 후 좌표 유지",
+    "description": "오버레이 지속 체크박스 라벨"
+  },
+  "overlaySettings": {
+    "message": "오버레이 설정",
+    "description": "오버레이 설정 섹션 제목"
+  },
+  "overlayPosition": {
+    "message": "좌표 위치",
+    "description": "오버레이 위치 선택 라벨"
+  },
+  "highlightColor": {
+    "message": "하이라이트 색상",
+    "description": "하이라이트 색상 선택 라벨"
+  },
+  "usageInstructions": {
+    "message": "Ctrl+드래그 (Mac: Cmd+드래그)로 요소를 이동하세요",
+    "description": "사용법 안내"
+  },
+  "homepageButton": {
+    "message": "🏠 홈페이지",
+    "description": "홈페이지 버튼 텍스트"
+  },
+  "advancedSettingsButton": {
+    "message": "⚙️ 고급 설정",
+    "description": "고급 설정 버튼 텍스트"
+  },
+  "positionTopLeft": {
+    "message": "왼쪽 위",
+    "description": "왼쪽 위 위치 옵션"
+  },
+  "positionTopRight": {
+    "message": "오른쪽 위",
+    "description": "오른쪽 위 위치 옵션"
+  },
+  "positionBottomLeft": {
+    "message": "왼쪽 아래",
+    "description": "왼쪽 아래 위치 옵션"
+  },
+  "positionBottomRight": {
+    "message": "오른쪽 아래",
+    "description": "오른쪽 아래 위치 옵션"
+  }
+}
