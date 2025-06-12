@@ -558,13 +558,13 @@
   </head>
   <body>
     <div class="container">
-      <button id="themeToggle" class="theme-toggle" title="다크모드/라이트모드 전환" onclick="toggleTheme()">
+      <button id="themeToggle" class="theme-toggle" title="다크모드/라이트모드 전환">
         <div class="sun-icon theme-icon"></div>
         <div class="moon-icon theme-icon"></div>
       </button>
 
       <div class="header-section">
-        <img src="app-icon.png" alt="App Icon" class="app-icon" />
+        <img src="icons/icon128.png" alt="App Icon" class="app-icon" />
         <h1>Elements Position Drag Overlay</h1>
       </div>
       <div class="subtitle">웹 개발자를 위한 실시간 CSS Position 도구 (Windows/Mac 지원)</div>
@@ -575,7 +575,7 @@
           이 도구는 <strong>크롬 확장 프로그램</strong>으로 설치하여 사용하는 것이 가장 효과적입니다.<br />
           설치 후 모든 웹사이트에서 실시간으로 요소의 position 값을 확인하고 조정할 수 있습니다.
         </p>
-        <a href="#" class="install-button" onclick="alert('크롬 웹 스토어에서 설치하세요!')">📦 크롬 확장 설치하기</a>
+        <a href="#" class="install-button">📦 크롬 확장 설치하기</a>
       </div>
 
       <div class="demo-preview">
@@ -648,57 +648,10 @@
       <div class="footer-cta">
         <h3>🎉 지금 바로 시작하세요!</h3>
         <p>Elements Position Drag Overlay를 설치하고 웹 개발 효율성을 높여보세요</p>
-        <a
-          href="#"
-          class="install-button"
-          onclick="alert('크롬 웹 스토어에서 Elements Position Drag Overlay를 검색하세요!')"
-          >📦 무료로 설치하기</a
-        >
+        <a href="#" class="install-button">📦 무료로 설치하기</a>
       </div>
     </div>
 
-    <script>
-      // 간단한 다크모드 토글
-      function toggleTheme() {
-        const isDark = document.documentElement.hasAttribute("data-theme");
-        const toggleButton = document.getElementById("themeToggle");
-
-        if (isDark) {
-          // 라이트모드로 변경
-          document.documentElement.removeAttribute("data-theme");
-          localStorage.setItem("theme", "light");
-          if (toggleButton) {
-            toggleButton.setAttribute("data-theme", "light");
-          }
-        } else {
-          // 다크모드로 변경
-          document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("theme", "dark");
-          if (toggleButton) {
-            toggleButton.setAttribute("data-theme", "dark");
-          }
-        }
-      }
-
-      function loadTheme() {
-        const savedTheme = localStorage.getItem("theme");
-        const toggleButton = document.getElementById("themeToggle");
-
-        if (savedTheme === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-          if (toggleButton) {
-            toggleButton.setAttribute("data-theme", "dark");
-          }
-        } else {
-          document.documentElement.removeAttribute("data-theme");
-          if (toggleButton) {
-            toggleButton.setAttribute("data-theme", "light");
-          }
-        }
-      }
-
-      // 페이지 로드 시 테마 적용
-      document.addEventListener("DOMContentLoaded", loadTheme);
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>

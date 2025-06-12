@@ -18,7 +18,7 @@
     "copy:popup": "node -e \"require('fs').cpSync('src/popup', 'dist/popup', {recursive: true})\"",
     "copy:options": "node -e \"require('fs').cpSync('src/options', 'dist/options', {recursive: true})\"",
     "copy:icons": "node -e \"require('fs').cpSync('src/icons', 'dist/icons', {recursive: true})\"",
-    "copy:html": "node -e \"require('fs').copyFileSync('src/index.html', 'dist/index.html'); require('fs').copyFileSync('src/index.js', 'dist/index.js')\"",
+    "copy:html": "node -e \"require('fs').copyFileSync('src/index.html', 'dist/index.html'); require('fs').copyFileSync('src/index.js', 'dist/index.js'); require('fs').copyFileSync('src/app-icon.png', 'dist/app-icon.png')\"",
     "copy:manifest": "node -e \"require('fs').copyFileSync('manifest.json', 'dist/manifest.json')\"",
     "test": "vitest",
     "test:ui": "vitest --ui",

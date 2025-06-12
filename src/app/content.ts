@@ -44,15 +44,66 @@ if (typeof chrome === "undefined" || !chrome.runtime) {
 
   // 메시지 리스너 등록
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "SETTINGS_UPDATED") {
+    console.log("Content script received message:", message);
+
+    if (message.action === "settingsChanged") {
+      console.log("Processing settingsChanged message");
+      console.log("Previous settings:", currentSettings);
+
+      // 팝업에서 설정 변경 시 즉시 적용
+      currentSettings = { ...EXTENSION_DEFAULT_SETTINGS, ...message.settings };
+      console.log("New settings applied:", currentSettings);
+
+      // 확장 기능 활성화/비활성화 처리
+      if (currentSettings.enabled) {
+        console.log("Extension is enabled, reinitializing...");
+
+        // 기존 UI 요소들 제거 후 다시 초기화 (설정 변경사항 적용)
+        const existingOverlay = document.getElementById("position-overlay");
+        const existingToastContainer = document.getElementById("drag-toast-container");
+
+        console.log("Existing overlay found:", !!existingOverlay);
+        console.log("Existing toast container found:", !!existingToastContainer);
+
+        if (existingOverlay) {
+          console.log("Removing existing overlay");
+          existingOverlay.remove();
+        }
+        if (existingToastContainer) {
+          console.log("Removing existing toast container");
+          existingToastContainer.remove();
+        }
+
+        // 새 설정으로 다시 초기화
+        console.log("Reinitializing drag system with new settings");
+        initDragSystem();
+      } else {
+        console.log("Extension is disabled, removing UI elements");
+
+        // 기존 UI 요소들 제거
+        const overlay = document.getElementById("position-overlay");
+        const toastContainer = document.getElementById("drag-toast-container");
+        if (overlay) overlay.remove();
+        if (toastContainer) toastContainer.remove();
+      }
+
+      console.log("Settings change processing complete");
+      sendResponse({ success: true });
+      return true; // 비동기 응답을 위해 true 반환
+    } else if (message.type === "SETTINGS_UPDATED") {
       currentSettings = { ...EXTENSION_DEFAULT_SETTINGS, ...message.settings };
       console.log("Settings updated:", currentSettings);
 
       // 확장 기능 활성화/비활성화 처리
       if (currentSettings.enabled) {
-        if (!document.getElementById("position-overlay")) {
-          initDragSystem();
-        }
+        // 기존 UI 요소들 제거 후 다시 초기화 (설정 변경사항 적용)
+        const existingOverlay = document.getElementById("position-overlay");
+        const existingToastContainer = document.getElementById("drag-toast-container");
+        if (existingOverlay) existingOverlay.remove();
+        if (existingToastContainer) existingToastContainer.remove();
+
+        // 새 설정으로 다시 초기화
+        initDragSystem();
       } else {
         // 기존 UI 요소들 제거
         const overlay = document.getElementById("position-overlay");
@@ -252,6 +303,55 @@ function initDragSystem() {
       display: none;
     `;
     document.body.appendChild(overlay);
+  }
+
+  // 오버레이 위치 업데이트 함수
+  function updateOverlayPosition() {
+    if (!overlay) return;
+
+    const position = currentSettings.overlayPosition || "top-left";
+    let positionStyles = "";
+
+    switch (position) {
+      case "top-left":
+        positionStyles = "top: 10px; left: 10px; right: auto; bottom: auto;";
+        break;
+      case "top-right":
+        positionStyles = "top: 10px; right: 10px; left: auto; bottom: auto;";
+        break;
+      case "bottom-left":
+        positionStyles = "bottom: 10px; left: 10px; right: auto; top: auto;";
+        break;
+      case "bottom-right":
+        positionStyles = "bottom: 10px; right: 10px; left: auto; top: auto;";
+        break;
+    }
+
+    // 기존 위치 스타일 초기화 후 새 위치 적용
+    overlay.style.top = "";
+    overlay.style.right = "";
+    overlay.style.bottom = "";
+    overlay.style.left = "";
+
+    // 새로운 위치 스타일 적용
+    switch (position) {
+      case "top-left":
+        overlay.style.top = "10px";
+        overlay.style.left = "10px";
+        break;
+      case "top-right":
+        overlay.style.top = "10px";
+        overlay.style.right = "10px";
+        break;
+      case "bottom-left":
+        overlay.style.bottom = "10px";
+        overlay.style.left = "10px";
+        break;
+      case "bottom-right":
+        overlay.style.bottom = "10px";
+        overlay.style.right = "10px";
+        break;
+    }
   }
 
   // 오버레이 업데이트
