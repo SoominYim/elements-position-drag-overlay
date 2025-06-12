@@ -42,6 +42,25 @@ function initializeExtension() {
         initDragSystem();
       }
       sendResponse({ success: true });
+    } else if (message.action === "toggle") {
+      // 단축키 토글 처리
+      console.log("Toggle command received");
+      currentSettings.enabled = !currentSettings.enabled;
+
+      // 설정을 storage에 저장
+      chrome.storage.sync.set({ enabled: currentSettings.enabled }, () => {
+        console.log("Extension toggled:", currentSettings.enabled ? "ON" : "OFF");
+
+        if (currentSettings.enabled) {
+          initDragSystem();
+          console.log("🔛 확장 기능 활성화됨");
+        } else {
+          destroyDragSystem();
+          console.log("🔕 확장 기능 비활성화됨");
+        }
+
+        sendResponse({ success: true, enabled: currentSettings.enabled });
+      });
     }
     return true;
   });

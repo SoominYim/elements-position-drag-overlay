@@ -148,4 +148,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 설정 로드 실행
   loadSettings();
+
+  // 팝업이 포커스를 받을 때마다 설정 새로고침
+  window.addEventListener("focus", () => {
+    console.log("Popup focused, reloading settings");
+    loadSettings();
+  });
+
+  // 설정 변경 감지 (단축키 토글 등)
+  chrome.storage.onChanged.addListener((changes, namespace) => {
+    if (namespace === "sync" && changes.enabled) {
+      console.log("Extension toggle detected in popup");
+      loadSettings(); // 설정 다시 로드하여 UI 업데이트
+    }
+  });
 });
