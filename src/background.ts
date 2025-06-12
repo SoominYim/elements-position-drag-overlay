@@ -1,8 +1,16 @@
-// Background Service Worker
-chrome.runtime.onInstalled.addListener(() => {
-  // 기본 설정
-  chrome.storage.sync.set({ enabled: true });
-  console.log("Elements Position Overlay 확장이 설치되었습니다!");
+// 백그라운드 스크립트
+console.log("Elements Position Drag Overlay - Background script loaded");
+
+// 확장 프로그램 설치/업데이트 시 실행
+chrome.runtime.onInstalled.addListener(details => {
+  console.log("Extension installed/updated:", details.reason);
+
+  // 설치 시 index.html 페이지 열기
+  if (details.reason === "install") {
+    chrome.tabs.create({
+      url: chrome.runtime.getURL("index.html"),
+    });
+  }
 });
 
 // 키보드 단축키 처리
@@ -14,6 +22,23 @@ chrome.commands.onCommand.addListener(command => {
         chrome.tabs.sendMessage(tabs[0].id, { action: "toggle" });
       }
     });
+  }
+});
+
+// 팝업에서 오는 메시지 처리
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "openIndexPage") {
+    // index.html 페이지 열기
+    chrome.tabs.create({
+      url: chrome.runtime.getURL("index.html"),
+    });
+    sendResponse({ success: true });
+  }
+
+  if (message.action === "openOptionsPage") {
+    // 옵션 페이지 열기
+    chrome.runtime.openOptionsPage();
+    sendResponse({ success: true });
   }
 });
 

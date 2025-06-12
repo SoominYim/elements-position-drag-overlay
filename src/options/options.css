@@ -277,7 +277,8 @@ main {
 }
 
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-info {
   padding: 14px 28px;
   border: none;
   border-radius: 10px;
@@ -312,8 +313,20 @@ main {
   color: #2c3e50;
 }
 
+.btn-info {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+}
+
+.btn-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
+}
+
 .btn-primary:active,
-.btn-secondary:active {
+.btn-secondary:active,
+.btn-info:active {
   transform: translateY(0);
 }
 
@@ -365,7 +378,8 @@ footer {
   }
 
   .btn-primary,
-  .btn-secondary {
+  .btn-secondary,
+  .btn-info {
     width: 100%;
     max-width: 250px;
   }

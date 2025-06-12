@@ -161,8 +161,7 @@ function toggleTheme() {
   }
 }
 
-// 전역 함수로 노출 (HTML onclick에서 사용)
-(window as any).toggleTheme = toggleTheme;
+// 전역 함수로 노출 (더 이상 필요 없음 - 이벤트 리스너 사용)
 
 document.addEventListener("DOMContentLoaded", () => {
   // 테마 먼저 로드
@@ -172,6 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const saveBtn = document.getElementById("saveBtn");
   const resetBtn = document.getElementById("resetBtn");
+  const indexBtn = document.getElementById("indexBtn");
+  const themeToggle = document.getElementById("themeToggle");
   const toastPosition = document.getElementById("toastPosition");
 
   if (saveBtn) {
@@ -180,6 +181,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (resetBtn) {
     resetBtn.addEventListener("click", resetOptionsSettings);
+  }
+
+  if (indexBtn) {
+    indexBtn.addEventListener("click", () => {
+      // 홈페이지 열기
+      chrome.tabs.create({
+        url: chrome.runtime.getURL("index.html"),
+      });
+    });
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
   }
 
   if (toastPosition) {
