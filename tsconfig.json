@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "module": "ES2022",
-    "target": "ES2022",
+    "module": "ESNext",
+    "target": "ESNext",
     "esModuleInterop": true,
     "strict": true,
     "sourceMap": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "declaration": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["DOM", "ES2022"]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "src/__tests__"]
+  "include": ["src/app/**/*.ts", "src/background.ts", "src/shared/**/*.ts", "src/demo/**/*.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }

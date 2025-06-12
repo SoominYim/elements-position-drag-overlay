@@ -1,7 +1,6 @@
-// Content Script - 크롬 확장용 통합 버전 (설정 지원)
-console.log("Elements Position Drag Overlay - Content Script Starting...");
+// Content Script - 크롬 확장 전용
+console.log("Elements Position Drag Overlay - Content Script Loaded");
 
-// 설정 인터페이스
 interface ExtensionSettings {
   enabled?: boolean;
   overlayPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
@@ -12,7 +11,6 @@ interface ExtensionSettings {
   highlightColor?: string;
 }
 
-// 기본 설정
 const EXTENSION_DEFAULT_SETTINGS: ExtensionSettings = {
   enabled: true,
   overlayPosition: "top-left",
@@ -23,133 +21,66 @@ const EXTENSION_DEFAULT_SETTINGS: ExtensionSettings = {
   highlightColor: "#667eea",
 };
 
-// 현재 설정
 let currentSettings: ExtensionSettings = { ...EXTENSION_DEFAULT_SETTINGS };
 
-// Chrome 확장 환경 확인
-if (typeof chrome === "undefined" || !chrome.runtime) {
-  console.error("Chrome extension runtime not available");
-} else {
-  console.log("Chrome extension runtime available");
-  console.log("Current URL:", window.location.href);
-
-  // 설정 로드 후 드래그 기능 초기화
+// 확장 기능 초기화
+function initializeExtension() {
   loadExtensionSettings().then(() => {
     if (currentSettings.enabled) {
       initDragSystem();
     } else {
-      console.log("Extension is disabled in settings");
+      console.log("Extension is disabled. Aborting initialization.");
     }
   });
 
-  // 메시지 리스너 등록
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log("Content script received message:", message);
-
     if (message.action === "settingsChanged") {
-      console.log("Processing settingsChanged message");
-      console.log("Previous settings:", currentSettings);
-
-      // 팝업에서 설정 변경 시 즉시 적용
       currentSettings = { ...EXTENSION_DEFAULT_SETTINGS, ...message.settings };
-      console.log("New settings applied:", currentSettings);
-
-      // 확장 기능 활성화/비활성화 처리
+      // 기존 시스템을 모두 정리하고 다시 시작
+      destroyDragSystem();
       if (currentSettings.enabled) {
-        console.log("Extension is enabled, reinitializing...");
-
-        // 기존 UI 요소들 제거 후 다시 초기화 (설정 변경사항 적용)
-        const existingOverlay = document.getElementById("position-overlay");
-        const existingToastContainer = document.getElementById("drag-toast-container");
-
-        console.log("Existing overlay found:", !!existingOverlay);
-        console.log("Existing toast container found:", !!existingToastContainer);
-
-        if (existingOverlay) {
-          console.log("Removing existing overlay");
-          existingOverlay.remove();
-        }
-        if (existingToastContainer) {
-          console.log("Removing existing toast container");
-          existingToastContainer.remove();
-        }
-
-        // 새 설정으로 다시 초기화
-        console.log("Reinitializing drag system with new settings");
         initDragSystem();
-      } else {
-        console.log("Extension is disabled, removing UI elements");
-
-        // 기존 UI 요소들 제거
-        const overlay = document.getElementById("position-overlay");
-        const toastContainer = document.getElementById("drag-toast-container");
-        if (overlay) overlay.remove();
-        if (toastContainer) toastContainer.remove();
       }
-
-      console.log("Settings change processing complete");
-      sendResponse({ success: true });
-      return true; // 비동기 응답을 위해 true 반환
-    } else if (message.type === "SETTINGS_UPDATED") {
-      currentSettings = { ...EXTENSION_DEFAULT_SETTINGS, ...message.settings };
-      console.log("Settings updated:", currentSettings);
-
-      // 확장 기능 활성화/비활성화 처리
-      if (currentSettings.enabled) {
-        // 기존 UI 요소들 제거 후 다시 초기화 (설정 변경사항 적용)
-        const existingOverlay = document.getElementById("position-overlay");
-        const existingToastContainer = document.getElementById("drag-toast-container");
-        if (existingOverlay) existingOverlay.remove();
-        if (existingToastContainer) existingToastContainer.remove();
-
-        // 새 설정으로 다시 초기화
-        initDragSystem();
-      } else {
-        // 기존 UI 요소들 제거
-        const overlay = document.getElementById("position-overlay");
-        const toastContainer = document.getElementById("drag-toast-container");
-        if (overlay) overlay.remove();
-        if (toastContainer) toastContainer.remove();
-      }
-
-      sendResponse({ success: true });
-    } else if (message.type === "TEST_EXTENSION") {
       sendResponse({ success: true });
     }
+    return true;
   });
 }
 
-// 설정 로드 함수
 async function loadExtensionSettings(): Promise<void> {
   return new Promise(resolve => {
-    if (typeof chrome !== "undefined" && chrome.storage) {
-      chrome.storage.sync.get(Object.keys(EXTENSION_DEFAULT_SETTINGS), (result: ExtensionSettings) => {
-        if (chrome.runtime.lastError) {
-          console.error("Failed to load settings:", chrome.runtime.lastError);
-          currentSettings = { ...EXTENSION_DEFAULT_SETTINGS };
-        } else {
-          currentSettings = { ...EXTENSION_DEFAULT_SETTINGS, ...result };
-          console.log("Settings loaded:", currentSettings);
-        }
-        resolve();
-      });
-    } else {
-      // 로컬 스토리지 폴백
-      const saved = localStorage.getItem("epo-settings");
-      if (saved) {
-        try {
-          currentSettings = { ...EXTENSION_DEFAULT_SETTINGS, ...JSON.parse(saved) };
-        } catch (e) {
-          console.error("Failed to parse saved settings:", e);
-        }
-      }
+    chrome.storage.sync.get(Object.keys(EXTENSION_DEFAULT_SETTINGS), (result: ExtensionSettings) => {
+      currentSettings = { ...EXTENSION_DEFAULT_SETTINGS, ...result };
+      console.log("Settings loaded:", currentSettings);
       resolve();
-    }
+    });
   });
+}
+
+let activeEventListeners: { type: string; listener: (e: any) => void; capture: boolean }[] = [];
+
+function destroyDragSystem() {
+  console.log("Destroying drag system...");
+  // 오버레이 및 토스트 컨테이너 제거
+  document.getElementById("position-overlay")?.remove();
+  document.getElementById("drag-toast-container")?.remove();
+
+  // 등록된 모든 이벤트 리스너 제거
+  activeEventListeners.forEach(L => document.removeEventListener(L.type, L.listener, L.capture));
+  activeEventListeners = [];
 }
 
 function initDragSystem() {
-  console.log("Initializing drag system...");
+  console.log("Initializing drag system for extension...");
+
+  function addTrackedListener<K extends keyof DocumentEventMap>(
+    type: K,
+    listener: (this: Document, ev: DocumentEventMap[K]) => any,
+    capture = false
+  ) {
+    document.addEventListener(type, listener, capture);
+    activeEventListeners.push({ type, listener, capture });
+  }
 
   // 드래그 매니저 상태
   let isDragging = false;
@@ -553,12 +484,14 @@ function initDragSystem() {
   }
 
   // 이벤트 리스너 등록
-  document.addEventListener("mousedown", onMouseDown, true);
-  document.addEventListener("mousemove", onMouseMove, true);
-  document.addEventListener("mouseup", onMouseUp, true);
-  document.addEventListener("scroll", onScroll, true);
-  document.addEventListener("keydown", onKeyDown, true);
-  document.addEventListener("keyup", onKeyUp, true);
+  addTrackedListener("mousedown", onMouseDown, true);
+  addTrackedListener("mousemove", onMouseMove, true);
+  addTrackedListener("mouseup", onMouseUp, true);
+  addTrackedListener("scroll", onScroll, true);
+  addTrackedListener("keydown", onKeyDown, true);
+  addTrackedListener("keyup", onKeyUp, true);
 
   console.log("Drag system initialized successfully!");
 }
+
+initializeExtension();
