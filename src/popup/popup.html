@@ -14,37 +14,91 @@
       </header>
 
       <main>
+        <!-- 메인 토글 -->
         <div class="toggle-section">
           <label class="toggle">
             <input type="checkbox" id="enableToggle" />
             <span class="slider"></span>
           </label>
           <div class="toggle-info">
-            <h3>오버레이 활성화</h3>
-            <p>Alt+드래그로 요소 위치 확인</p>
+            <h3>확장 기능 활성화</h3>
+            <p>Ctrl+드래그로 요소 위치 확인</p>
           </div>
         </div>
 
-        <div class="shortcuts">
-          <h3>🔧 단축키</h3>
-          <div class="shortcut-item">
-            <kbd>Alt + D</kbd>
-            <span>토글 ON/OFF</span>
+        <!-- 빠른 설정 -->
+        <div class="quick-settings">
+          <h3>⚡ 빠른 설정</h3>
+
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="showToasts" />
+              <span>알림 메시지 표시</span>
+            </label>
           </div>
-          <div class="shortcut-item">
-            <kbd>Alt + 드래그</kbd>
-            <span>요소 이동 & 위치 표시</span>
+
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="persistOverlay" />
+              <span>드래그 후 좌표 유지</span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="showHoverHighlight" />
+              <span>호버 하이라이트</span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <label for="overlayPosition">좌표 위치:</label>
+            <select id="overlayPosition">
+              <option value="top-left">좌측 상단</option>
+              <option value="top-right">우측 상단</option>
+              <option value="bottom-left">좌측 하단</option>
+              <option value="bottom-right">우측 하단</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <label for="highlightColor">하이라이트 색상:</label>
+            <select id="highlightColor">
+              <option value="#4FC08D">Vue 그린</option>
+              <option value="#41B883">Vue 다크그린</option>
+              <option value="#35495E">Vue 다크</option>
+              <option value="#42B883">에메랄드</option>
+              <option value="#00D8FF">시안</option>
+            </select>
           </div>
         </div>
 
+        <!-- 사용법 -->
+        <div class="usage-info">
+          <h3>📖 사용법</h3>
+          <div class="usage-item">
+            <kbd>Ctrl + 드래그</kbd>
+            <span>요소 이동</span>
+          </div>
+          <div class="usage-item">
+            <kbd>Ctrl + 호버</kbd>
+            <span>미리보기</span>
+          </div>
+          <div class="usage-item">
+            <kbd>Escape</kbd>
+            <span>좌표 숨기기</span>
+          </div>
+        </div>
+
+        <!-- 액션 버튼 -->
         <div class="actions">
-          <button id="testBtn" class="btn-primary">🚀 웹 데모 열기</button>
-          <button id="optionsBtn" class="btn-secondary">⚙️ 설정</button>
+          <button id="demoBtn" class="btn-primary">🚀 웹 데모</button>
+          <button id="optionsBtn" class="btn-secondary">⚙️ 고급 설정</button>
         </div>
       </main>
 
       <footer>
-        <div class="status" id="status">✅ Ready</div>
+        <div class="status" id="status">✅ 준비됨</div>
       </footer>
     </div>
 
