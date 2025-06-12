@@ -62,7 +62,7 @@ function initDemoDragSystem() {
     overlay.id = "demo-position-overlay";
 
     const position = DEMO_SETTINGS.overlayPosition;
-    let positionStyles = `top: 10px; right: 10px;`;
+    let positionStyles = `top: 10px; left: 10px;`;
     if (position === "top-left") positionStyles = `top: 10px; left: 10px;`;
     if (position === "bottom-left") positionStyles = `bottom: 10px; left: 10px;`;
     if (position === "bottom-right") positionStyles = `bottom: 10px; right: 10px;`;
