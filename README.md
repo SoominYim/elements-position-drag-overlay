@@ -1,31 +1,29 @@
-# 🎯 Elements Position Drag Overlay
+# Elements Position Drag Overlay
 
-**실시간 CSS Position 오버레이 도구**
+**웹 요소의 CSS position 값을 실시간으로 확인하는 크롬 확장**
 
-Alt+드래그로 웹 요소의 CSS position(left/top 등) 값을 실시간 오버레이로 보여주는 크롬 확장 및 웹 도구입니다. 개발자, 디자이너, QA를 위한 필수 생산성 툴입니다.
+Ctrl+드래그로 웹 요소를 이동하면서 CSS position 값(left, top, right, bottom)을 실시간으로 확인할 수 있는 크롬 확장 프로그램입니다. 개발자, 디자이너, QA 작업에 유용합니다.
 
 [Demo](https://elements-position-drag-overlay.vercel.app/)
 
-## ✨ 주요 기능
+## 주요 기능
 
-- 🎨 **실시간 Position 표시**: 드래그하는 동안 left, top, right, bottom 값을 실시간으로 확인
-- 🔧 **개발자 친화적**: CSS position 속성과 요소 크기까지 한눈에 파악
-- ⚡ **빠른 프로토타이핑**: UI 레이아웃 조정과 반응형 디자인 작업에 최적화
-- 🌐 **크롬 확장 + 웹 데모**: 모든 웹사이트에서 사용 가능 + 독립 실행형 데모
-- 🔥 **현대적 기술스택**: TypeScript, ESM, Vitest, 다중 패키지 매니저 지원
+- **실시간 좌표 표시**: 드래그하는 동안 left, top, right, bottom 값을 실시간으로 확인
+- **position: absolute 요소만 드래그 가능**: 레이아웃이 깨지지 않도록 제한
+- **스크롤 보정**: 페이지 스크롤 중에도 정확한 위치 계산
+- **크롬 확장 + 웹 데모**: 모든 웹사이트에서 사용 가능하며 독립 실행형 데모도 제공
+- **TypeScript 기반**: 안정적인 코드와 개발 경험
 
-## 🚀 빠른 시작
+## 빠른 시작
 
-> 📦 **패키지 매니저 선택 가이드**: [PACKAGE_MANAGER.md](./PACKAGE_MANAGER.md)에서 상세한 비교와 최적화 팁을 확인하세요!
+> **중요**: 이 레포지토리는 소스 코드만 포함합니다. 사용하려면 반드시 빌드가 필요합니다!
 
-> ⚠️ **중요**: 이 레포지토리는 소스 코드만 포함합니다. 사용하려면 반드시 빌드가 필요합니다!
-
-### 📦 설치 및 빌드 (필수)
+### 설치 및 빌드
 
 GitHub에서 클론한 후 다음 단계를 따라주세요:
 
 <details>
-<summary><strong>🧶 Yarn (권장)</strong></summary>
+<summary><strong>Yarn (권장)</strong></summary>
 
 ```bash
 # 1. 레포지토리 클론
@@ -48,7 +46,7 @@ yarn test:run
 </details>
 
 <details>
-<summary><strong>📦 npm</strong></summary>
+<summary><strong>npm</strong></summary>
 
 ```bash
 # 1. 레포지토리 클론
@@ -71,7 +69,7 @@ npm run test:run
 </details>
 
 <details>
-<summary><strong>⚡ pnpm</strong></summary>
+<summary><strong>pnpm</strong></summary>
 
 ```bash
 # 1. 레포지토리 클론
@@ -93,12 +91,12 @@ pnpm test:run
 
 </details>
 
-### 🌐 웹 데모 바로 보기
+### 웹 데모 실행
 
 **CORS 정책으로 인해 로컬 서버 실행이 필요합니다!**
 
 <details>
-<summary><strong>🚀 방법 1: 내장 Node.js 서버 (권장)</strong></summary>
+<summary><strong>방법 1: 내장 Node.js 서버 (권장)</strong></summary>
 
 ```bash
 # 빌드 + 서버 실행 (자동)
@@ -114,7 +112,7 @@ npm run serve       # http://localhost:3000 서버 실행
 </details>
 
 <details>
-<summary><strong>🐍 방법 2: Python 서버</strong></summary>
+<summary><strong>방법 2: Python 서버</strong></summary>
 
 ```bash
 # Python 3
@@ -134,7 +132,7 @@ python -m http.server 8000
 </details>
 
 <details>
-<summary><strong>🌟 방법 3: 기타 서버들</strong></summary>
+<summary><strong>방법 3: 기타 서버들</strong></summary>
 
 ```bash
 # Live Server (VS Code 확장)
@@ -155,41 +153,38 @@ serve dist
 
 > ⚠️ **왜 file:// 로 안 되나요?** 브라우저의 CORS 보안 정책으로 인해 `file://` 프로토콜에서는 JavaScript 모듈 로드가 차단됩니다.
 
-**사용법**: Alt + 드래그로 파란색 박스를 움직여보세요! 🎯
+**사용법**: Ctrl + 드래그로 파란색 박스를 움직여보세요!
 
-### 🧩 크롬 확장으로 설치
-
-> 🚀 **상세 가이드**: [CHROME_EXTENSION_GUIDE.md](./CHROME_EXTENSION_GUIDE.md)에서 스크린샷과 함께 단계별 설치 방법을 확인하세요!
+### 크롬 확장으로 설치 (메인 기능)
 
 1. 빌드 실행하여 dist/ 폴더 생성:
    ```bash
-   yarn build    # 또는 npm run build / pnpm build
+   npm run build    # 또는 yarn build / pnpm build
    ```
 2. Chrome 브라우저 → 확장 프로그램 관리 (`chrome://extensions/`)
 3. 우측 상단 **개발자 모드** ON
 4. **"압축해제된 확장 프로그램 로드"** 클릭
 5. **dist/** 폴더 선택
-6. 🎉 설치 완료!
+6. 설치 완료!
 
-**사용법**: 이제 **모든 웹사이트**에서 Alt+드래그 사용 가능! 🌍
+**사용법**: 이제 **모든 웹사이트**에서 Ctrl+드래그 사용 가능합니다!
 
-## 🎮 사용법
-
-### 웹 데모에서:
-
-- `Alt + 드래그`로 요소 이동
-- 실시간 CSS 좌표값 오버레이 표시 (우측 상단)
-- 좌측 상단 상태바에서 현재 동작 확인
+## 사용법
 
 ### 크롬 확장에서:
 
-- **모든 웹사이트**에서 `Alt + 드래그` 사용 가능
-- `Alt + D`: 확장 ON/OFF 토글
-- 확장 아이콘 클릭 → 팝업에서 설정 관리
-- 설정 페이지에서 오버레이 위치 변경
+- **모든 웹사이트**에서 `Ctrl + 드래그` 사용 가능
+- **position: absolute** 요소만 드래그 가능 (relative, static 요소는 에러 메시지 표시)
+- 드래그 중 실시간으로 left, top, right, bottom 값 표시
+- 확장 아이콘 클릭으로 설정 관리
 
+### 웹 데모에서:
 
-## 🧪 테스트
+- `Ctrl + 드래그`로 테스트 요소 이동
+- 실시간 CSS 좌표값 오버레이 표시
+- 다양한 position 속성 요소로 테스트 가능
+
+## 테스트
 
 ### 빠른 테스트 실행
 
