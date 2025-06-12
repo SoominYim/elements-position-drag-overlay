@@ -1,25 +1,121 @@
+# Build outputs
 dist/
+build/
+out/
+
+# Dependencies
 node_modules/
-.DS_Store
-*.log
-coverage/
+.pnpm-store/
+
+# Environment variables
 .env
 .env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+
+# IDE and Editor files
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# Package manager lock files
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Package manager lock files (다중 패키지 매니저 지원)
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
-.pnpm-store/
 
 # Yarn specific
 .yarn/
 .yarnrc.yml
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
 
 # pnpm specific
 .pnpm/
 
 # Bun specific (future support)
-bun.lockb 
+bun.lockb
+
+# Temporary folders
+tmp/
+temp/
+
+# Chrome extension specific
+*.crx
+*.pem
+key.pem
+
+# Test artifacts
+test-results/
+playwright-report/
+test-results.xml
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+.env.test
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Local development files
+.local/
+local/ 
