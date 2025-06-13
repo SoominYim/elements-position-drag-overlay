@@ -123,10 +123,6 @@
     "message": "🔕 扩展功能已停用",
     "description": "扩展功能停用消息"
   },
-  "settingsLoaded": {
-    "message": "设置已加载：",
-    "description": "设置加载消息"
-  },
   "destroyingDragSystem": {
     "message": "正在销毁拖拽系统...",
     "description": "销毁拖拽系统消息"

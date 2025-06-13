@@ -10,175 +10,198 @@ interface ExtensionSettings {
 
 const POPUP_DEFAULT_SETTINGS: ExtensionSettings = {
   enabled: true,
-  overlayPosition: "top-left",
+  overlayPosition: "top-right",
   showToasts: true,
   persistOverlay: true,
   showHoverHighlight: true,
   highlightColor: "#4FC08D",
 };
 
-function updatePopupStatus(message: string, type: "success" | "error" | "info" = "info") {
-  const status = document.getElementById("status");
-  if (status) {
-    const icons = { success: "✅", error: "❌", info: "💡" };
-    status.textContent = `${icons[type]} ${message}`;
-  }
-}
+// DOM이 로드되면 실행
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Popup script loaded");
 
-function saveSettings(settings: ExtensionSettings) {
-  if (typeof chrome !== "undefined" && chrome.storage) {
+  // 안전한 탭 메시지 전송 함수
+  async function sendMessageToActiveTab(message: any, callback?: (response: any) => void) {
+    try {
+      const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (tabs[0]?.id) {
+        // 탭 정보 확인
+        const tab = tabs[0];
+        if (
+          tab.url?.startsWith("chrome://") ||
+          tab.url?.startsWith("chrome-extension://") ||
+          tab.url?.startsWith("about:") ||
+          tab.url?.startsWith("file://")
+        ) {
+          console.log("Cannot send message to this page:", tab.url);
+          return;
+        }
+
+        chrome.tabs.sendMessage(tab.id!, message, response => {
+          if (chrome.runtime.lastError) {
+            console.log("Could not send message to content script:", chrome.runtime.lastError.message);
+            return;
+          }
+          if (callback) callback(response);
+        });
+      }
+    } catch (error: any) {
+      console.log("Error sending message to tab:", error.message);
+    }
+  }
+
+  // 설정 요소들 가져오기
+  const enabledCheckbox = document.getElementById("enableToggle") as HTMLInputElement;
+  const showToastsCheckbox = document.getElementById("showToasts") as HTMLInputElement;
+  const showHoverCheckbox = document.getElementById("showHoverHighlight") as HTMLInputElement;
+  const persistOverlayCheckbox = document.getElementById("persistOverlay") as HTMLInputElement;
+  const overlayPositionSelect = document.getElementById("overlayPosition") as HTMLSelectElement;
+  const highlightColorSelect = document.getElementById("highlightColor") as HTMLSelectElement;
+
+  // 요소들이 제대로 찾아졌는지 확인
+  console.log("Elements found:", {
+    enabledCheckbox: !!enabledCheckbox,
+    showToastsCheckbox: !!showToastsCheckbox,
+    showHoverCheckbox: !!showHoverCheckbox,
+    persistOverlayCheckbox: !!persistOverlayCheckbox,
+    overlayPositionSelect: !!overlayPositionSelect,
+    highlightColorSelect: !!highlightColorSelect,
+  });
+
+  // 상태 업데이트 함수
+  function updateStatus(enabled: boolean) {
+    const statusElement = document.getElementById("status");
+    if (statusElement) {
+      if (enabled) {
+        statusElement.textContent = "✅ 활성화됨";
+        statusElement.className = "status active";
+      } else {
+        statusElement.textContent = "⏸️ 비활성화됨";
+        statusElement.className = "status inactive";
+      }
+    }
+  }
+
+  // 설정 로드
+  function loadSettings() {
+    console.log("Loading settings...");
+    chrome.storage.sync.get(POPUP_DEFAULT_SETTINGS, (settings: ExtensionSettings) => {
+      console.log("Settings loaded:", settings);
+
+      if (enabledCheckbox) enabledCheckbox.checked = settings.enabled ?? true;
+      if (showToastsCheckbox) showToastsCheckbox.checked = settings.showToasts ?? true;
+      if (showHoverCheckbox) showHoverCheckbox.checked = settings.showHoverHighlight ?? true;
+      if (persistOverlayCheckbox) persistOverlayCheckbox.checked = settings.persistOverlay ?? true;
+      if (overlayPositionSelect) overlayPositionSelect.value = settings.overlayPosition ?? "top-right";
+      if (highlightColorSelect) highlightColorSelect.value = settings.highlightColor ?? "#4FC08D";
+
+      updateStatus(settings.enabled ?? true);
+    });
+  }
+
+  // 설정 저장
+  function saveSettings() {
+    console.log("Saving settings...");
+
+    const settings: ExtensionSettings = {
+      enabled: enabledCheckbox?.checked ?? true,
+      showToasts: showToastsCheckbox?.checked ?? true,
+      showHoverHighlight: showHoverCheckbox?.checked ?? true,
+      persistOverlay: persistOverlayCheckbox?.checked ?? true,
+      overlayPosition: (overlayPositionSelect?.value as ExtensionSettings["overlayPosition"]) ?? "top-right",
+      highlightColor: highlightColorSelect?.value ?? "#4FC08D",
+    };
+
+    console.log("Settings to save:", settings);
+
     chrome.storage.sync.set(settings, () => {
       if (chrome.runtime.lastError) {
-        updatePopupStatus("설정 저장 실패", "error");
-      } else {
-        updatePopupStatus("설정 저장됨", "success");
-        // 활성 탭에 설정 변경 알림
-        notifyContentScript(settings);
-        setTimeout(() => updatePopupStatus("준비됨", "info"), 2000);
-      }
-    });
-  } else {
-    // 로컬 스토리지 폴백
-    localStorage.setItem("epo-settings", JSON.stringify(settings));
-    updatePopupStatus("설정 저장됨 (로컬)", "success");
-  }
-}
-
-function notifyContentScript(settings: ExtensionSettings) {
-  if (typeof chrome !== "undefined" && chrome.tabs) {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      if (tabs[0]?.id) {
-        chrome.tabs
-          .sendMessage(tabs[0].id, {
-            type: "SETTINGS_UPDATED",
-            settings: settings,
-          })
-          .catch(() => {
-            // Content script가 없는 경우 무시
-          });
-      }
-    });
-  }
-}
-
-function loadSettings() {
-  if (typeof chrome !== "undefined" && chrome.storage) {
-    chrome.storage.sync.get(Object.keys(POPUP_DEFAULT_SETTINGS), (result: ExtensionSettings) => {
-      if (chrome.runtime.lastError) {
-        updatePopupStatus("설정 로드 실패", "error");
+        console.error("Error saving settings:", chrome.runtime.lastError);
         return;
       }
 
-      const settings = { ...POPUP_DEFAULT_SETTINGS, ...result };
-      applySettingsToUI(settings);
-      updatePopupStatus(settings.enabled ? "활성화됨" : "비활성화됨", settings.enabled ? "success" : "info");
+      console.log("Settings saved successfully");
+      updateStatus(settings.enabled ?? true);
+
+      // 활성 탭에 설정 변경 알림
+      sendMessageToActiveTab(
+        {
+          action: "settingsChanged",
+          settings: settings,
+        },
+        response => {
+          console.log("Settings sent to content script:", response);
+        }
+      );
     });
-  } else {
-    // 로컬 스토리지 폴백
-    const saved = localStorage.getItem("epo-settings");
-    let settings = POPUP_DEFAULT_SETTINGS;
-
-    if (saved) {
-      try {
-        settings = { ...POPUP_DEFAULT_SETTINGS, ...JSON.parse(saved) };
-      } catch (e) {
-        console.error("Failed to parse saved settings:", e);
-      }
-    }
-
-    applySettingsToUI(settings);
-    updatePopupStatus("로컬 모드", "info");
   }
-}
 
-function applySettingsToUI(settings: ExtensionSettings) {
-  const elements = {
-    enableToggle: document.getElementById("enableToggle") as HTMLInputElement,
-    showToasts: document.getElementById("showToasts") as HTMLInputElement,
-    persistOverlay: document.getElementById("persistOverlay") as HTMLInputElement,
-    showHoverHighlight: document.getElementById("showHoverHighlight") as HTMLInputElement,
-    overlayPosition: document.getElementById("overlayPosition") as HTMLSelectElement,
-    highlightColor: document.getElementById("highlightColor") as HTMLSelectElement,
-  };
-
-  if (elements.enableToggle) elements.enableToggle.checked = settings.enabled ?? true;
-  if (elements.showToasts) elements.showToasts.checked = settings.showToasts ?? true;
-  if (elements.persistOverlay) elements.persistOverlay.checked = settings.persistOverlay ?? true;
-  if (elements.showHoverHighlight) elements.showHoverHighlight.checked = settings.showHoverHighlight ?? true;
-  if (elements.overlayPosition) elements.overlayPosition.value = settings.overlayPosition ?? "top-left";
-  if (elements.highlightColor) elements.highlightColor.value = settings.highlightColor ?? "#4FC08D";
-}
-
-function getCurrentSettings(): ExtensionSettings {
-  const elements = {
-    enableToggle: document.getElementById("enableToggle") as HTMLInputElement,
-    showToasts: document.getElementById("showToasts") as HTMLInputElement,
-    persistOverlay: document.getElementById("persistOverlay") as HTMLInputElement,
-    showHoverHighlight: document.getElementById("showHoverHighlight") as HTMLInputElement,
-    overlayPosition: document.getElementById("overlayPosition") as HTMLSelectElement,
-    highlightColor: document.getElementById("highlightColor") as HTMLSelectElement,
-  };
-
-  return {
-    enabled: elements.enableToggle?.checked ?? true,
-    showToasts: elements.showToasts?.checked ?? true,
-    persistOverlay: elements.persistOverlay?.checked ?? true,
-    showHoverHighlight: elements.showHoverHighlight?.checked ?? true,
-    overlayPosition: (elements.overlayPosition?.value as ExtensionSettings["overlayPosition"]) ?? "top-left",
-    highlightColor: elements.highlightColor?.value ?? "#4FC08D",
-  };
-}
-
-// DOM이 로드되면 실행
-document.addEventListener("DOMContentLoaded", () => {
-  // 초기 설정 로드
-  loadSettings();
-
-  // 설정 요소들
-  const settingElements = [
-    "enableToggle",
-    "showToasts",
-    "persistOverlay",
-    "showHoverHighlight",
-    "overlayPosition",
-    "highlightColor",
-  ];
-
-  // 설정 변경 이벤트 리스너
-  settingElements.forEach(id => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.addEventListener("change", () => {
-        const settings = getCurrentSettings();
-        saveSettings(settings);
+  // 이벤트 리스너 등록
+  [enabledCheckbox, showToastsCheckbox, showHoverCheckbox, persistOverlayCheckbox].forEach(checkbox => {
+    if (checkbox) {
+      checkbox.addEventListener("change", () => {
+        console.log(`Checkbox ${checkbox.id} changed to:`, checkbox.checked);
+        saveSettings();
       });
     }
   });
 
-  // 버튼 이벤트 리스너
-  const demoBtn = document.getElementById("demoBtn");
-  const optionsBtn = document.getElementById("optionsBtn");
+  [overlayPositionSelect, highlightColorSelect].forEach(select => {
+    if (select) {
+      select.addEventListener("change", () => {
+        console.log(`Select ${select.id} changed to:`, select.value);
+        saveSettings();
+      });
+    }
+  });
 
-  // 웹 데모 버튼
-  if (demoBtn) {
-    demoBtn.addEventListener("click", () => {
-      if (typeof chrome !== "undefined" && chrome.tabs) {
-        chrome.tabs.create({
-          url: chrome.runtime.getURL("index.html"),
-        });
-      } else {
-        // 로컬에서 테스트할 때
-        window.open("./index.html", "_blank");
-      }
+  // 홈페이지 버튼
+  const indexBtn = document.getElementById("indexBtn");
+  if (indexBtn) {
+    indexBtn.addEventListener("click", () => {
+      chrome.runtime.sendMessage({ action: "openIndexPage" }, response => {
+        if (chrome.runtime.lastError) {
+          console.log("Could not send message to background:", chrome.runtime.lastError.message);
+          return;
+        }
+        if (response?.success) {
+          window.close(); // 팝업 닫기
+        }
+      });
     });
   }
 
   // 고급 설정 버튼
+  const optionsBtn = document.getElementById("optionsBtn");
   if (optionsBtn) {
     optionsBtn.addEventListener("click", () => {
-      if (typeof chrome !== "undefined" && chrome.runtime) {
-        chrome.runtime.openOptionsPage();
-      }
+      chrome.runtime.sendMessage({ action: "openOptionsPage" }, response => {
+        if (chrome.runtime.lastError) {
+          console.log("Could not send message to background:", chrome.runtime.lastError.message);
+          return;
+        }
+        if (response?.success) {
+          window.close(); // 팝업 닫기
+        }
+      });
     });
   }
+
+  // 설정 로드 실행
+  loadSettings();
+
+  // 팝업이 포커스를 받을 때마다 설정 새로고침
+  window.addEventListener("focus", () => {
+    console.log("Popup focused, reloading settings");
+    loadSettings();
+  });
+
+  // 설정 변경 감지 (단축키 토글 등)
+  chrome.storage.onChanged.addListener((changes, namespace) => {
+    if (namespace === "sync" && changes.enabled) {
+      console.log("Extension toggle detected in popup");
+      loadSettings(); // 설정 다시 로드하여 UI 업데이트
+    }
+  });
 });

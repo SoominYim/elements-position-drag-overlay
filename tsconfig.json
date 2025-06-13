@@ -12,6 +12,13 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["DOM", "ES2022"]
   },
-  "include": ["src/app/**/*.ts", "src/background.ts", "src/shared/**/*.ts", "src/demo/**/*.ts"],
+  "include": [
+    "src/app/**/*.ts",
+    "src/background.ts",
+    "src/shared/**/*.ts",
+    "src/demo/**/*.ts",
+    "src/popup/**/*.ts",
+    "src/options/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }
