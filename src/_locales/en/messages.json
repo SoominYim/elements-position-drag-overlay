@@ -82,5 +82,305 @@
   "positionBottomRight": {
     "message": "Bottom Right",
     "description": "Bottom right position option"
+  },
+  "backgroundScriptLoaded": {
+    "message": "Elements Position Drag Overlay - Background script loaded",
+    "description": "Background script loaded message"
+  },
+  "contentScriptLoaded": {
+    "message": "Elements Position Drag Overlay - Content Script Loaded",
+    "description": "Content script loaded message"
+  },
+  "cannotInjectScript": {
+    "message": "Cannot inject content script on this page:",
+    "description": "Cannot inject script message"
+  },
+  "messageError": {
+    "message": "Could not send message to content script:",
+    "description": "Message sending error"
+  },
+  "extensionInstalled": {
+    "message": "Extension installed/updated:",
+    "description": "Extension installation message"
+  },
+  "contentScriptInjected": {
+    "message": "Content script injected successfully",
+    "description": "Content script injection success message"
+  },
+  "contentScriptAlreadyExists": {
+    "message": "Content script already exists or cannot be injected",
+    "description": "Content script injection failure message"
+  },
+  "extensionDisabled": {
+    "message": "Extension is disabled. Aborting initialization.",
+    "description": "Extension disabled message"
+  },
+  "toggleReceived": {
+    "message": "Toggle command received",
+    "description": "Toggle command received message"
+  },
+  "extensionToggled": {
+    "message": "Extension toggled:",
+    "description": "Extension toggled message"
+  },
+  "extensionActivated": {
+    "message": "🔛 Extension activated",
+    "description": "Extension activated message"
+  },
+  "extensionDeactivated": {
+    "message": "🔕 Extension deactivated",
+    "description": "Extension deactivated message"
+  },
+  "settingsLoaded": {
+    "message": "Settings loaded:",
+    "description": "Settings loaded message"
+  },
+  "destroyingDragSystem": {
+    "message": "Destroying drag system...",
+    "description": "Destroying drag system message"
+  },
+  "initializingDragSystem": {
+    "message": "Initializing drag system for extension...",
+    "description": "Initializing drag system message"
+  },
+  "dragSystemInitialized": {
+    "message": "Drag system initialized successfully!",
+    "description": "Drag system initialized message"
+  },
+  "dragNotAllowed": {
+    "message": "❌ Drag not allowed! This element has position: {position}",
+    "description": "Drag not allowed toast message"
+  },
+  "dragStart": {
+    "message": "🎯 Drag started!",
+    "description": "Drag start toast message"
+  },
+  "dragComplete": {
+    "message": "✅ Drag completed!",
+    "description": "Drag complete toast message"
+  },
+  "demoScriptLoaded": {
+    "message": "Elements Position Drag Overlay - DEMO SCRIPT LOADED",
+    "description": "Demo script loaded message"
+  },
+  "initializingDemo": {
+    "message": "Initializing demo drag system...",
+    "description": "Initializing demo message"
+  },
+  "optionsTitle": {
+    "message": "Elements Position Overlay - Advanced Settings",
+    "description": "Options page title"
+  },
+  "themeToggleTitle": {
+    "message": "Toggle dark/light mode",
+    "description": "Theme toggle button title"
+  },
+  "advancedSettings": {
+    "message": "Advanced settings and detailed options",
+    "description": "Options page subtitle"
+  },
+  "advancedOverlaySettings": {
+    "message": "Advanced Overlay Settings",
+    "description": "Advanced overlay settings section title"
+  },
+  "toastPosition": {
+    "message": "Toast Message Position:",
+    "description": "Toast position label"
+  },
+  "toastPositionDescription": {
+    "message": "Set the position where notification messages are displayed",
+    "description": "Toast position description"
+  },
+  "usageAndInfo": {
+    "message": "Usage and Information",
+    "description": "Usage section title"
+  },
+  "howToUse": {
+    "message": "📖 How to Use",
+    "description": "How to use title"
+  },
+  "ctrlDrag": {
+    "message": "Ctrl + Drag: Move elements with position: absolute",
+    "description": "Ctrl+drag usage"
+  },
+  "ctrlHover": {
+    "message": "Ctrl + Hover: Preview draggable elements",
+    "description": "Ctrl+hover usage"
+  },
+  "escapeKey": {
+    "message": "Escape: Hide coordinate overlay",
+    "description": "Escape key usage"
+  },
+  "limitations": {
+    "message": "⚠️ Limitations",
+    "description": "Limitations title"
+  },
+  "absoluteOnly": {
+    "message": "Only elements with position: absolute can be dragged",
+    "description": "Absolute position only limitation"
+  },
+  "otherPositions": {
+    "message": "relative, static, fixed elements show error message",
+    "description": "Other position elements limitation"
+  },
+  "layoutProtection": {
+    "message": "Safety mechanism for layout protection",
+    "description": "Layout protection description"
+  },
+  "technicalInfo": {
+    "message": "ℹ️ Technical Information",
+    "description": "Technical info title"
+  },
+  "version": {
+    "message": "Version:",
+    "description": "Version label"
+  },
+  "manifest": {
+    "message": "Manifest:",
+    "description": "Manifest label"
+  },
+  "permissions": {
+    "message": "Permissions:",
+    "description": "Permissions label"
+  },
+  "mainSettings": {
+    "message": "Main Settings:",
+    "description": "Main settings label"
+  },
+  "popupChangeable": {
+    "message": "Changeable in popup",
+    "description": "Popup changeable description"
+  },
+  "saveSettings": {
+    "message": "💾 Save Settings",
+    "description": "Save settings button"
+  },
+  "resetToDefault": {
+    "message": "🔄 Reset to Default",
+    "description": "Reset to default button"
+  },
+  "homepage": {
+    "message": "🏠 Homepage",
+    "description": "Homepage button"
+  },
+  "changeSettings": {
+    "message": "⚙️ Change settings",
+    "description": "Change settings message"
+  },
+  "toastTopRight": {
+    "message": "Top Right",
+    "description": "Toast top right position"
+  },
+  "toastTopLeft": {
+    "message": "Top Left",
+    "description": "Toast top left position"
+  },
+  "toastBottomRight": {
+    "message": "Bottom Right",
+    "description": "Toast bottom right position"
+  },
+  "toastBottomLeft": {
+    "message": "Bottom Left",
+    "description": "Toast bottom left position"
+  },
+  "popupMainTitle": {
+    "message": "🛠 Elements Position Drag Overlay",
+    "description": "Popup main title"
+  },
+  "quickSettings": {
+    "message": "⚡ Quick Settings",
+    "description": "Quick settings section title"
+  },
+  "showToastMessages": {
+    "message": "Show Toast Messages",
+    "description": "Show toast messages checkbox"
+  },
+  "keepCoordinatesAfterDrag": {
+    "message": "Keep Coordinates After Drag",
+    "description": "Keep coordinates after drag checkbox"
+  },
+  "hoverHighlight": {
+    "message": "Hover Highlight",
+    "description": "Hover highlight checkbox"
+  },
+  "coordinatesPosition": {
+    "message": "Coordinates Position:",
+    "description": "Coordinates position label"
+  },
+  "highlightColorLabel": {
+    "message": "Highlight Color:",
+    "description": "Highlight color label"
+  },
+  "vueGreen": {
+    "message": "Vue Green",
+    "description": "Vue green color"
+  },
+  "vueDarkGreen": {
+    "message": "Vue Dark Green",
+    "description": "Vue dark green color"
+  },
+  "vueDark": {
+    "message": "Vue Dark",
+    "description": "Vue dark color"
+  },
+  "emerald": {
+    "message": "Emerald",
+    "description": "Emerald color"
+  },
+  "cyan": {
+    "message": "Cyan",
+    "description": "Cyan color"
+  },
+  "usageGuide": {
+    "message": "📖 Usage Guide",
+    "description": "Usage guide section title"
+  },
+  "ctrlDragUsage": {
+    "message": "Move elements (Mac: Cmd+Drag)",
+    "description": "Ctrl+drag usage description"
+  },
+  "ctrlHoverUsage": {
+    "message": "Preview (Mac: Cmd+Hover)",
+    "description": "Ctrl+hover usage description"
+  },
+  "escapeUsage": {
+    "message": "Hide coordinates",
+    "description": "Escape key usage description"
+  },
+  "ready": {
+    "message": "✅ Ready",
+    "description": "Ready status message"
+  },
+  "madeBy": {
+    "message": "Made by Soomin",
+    "description": "Creator information"
+  },
+  "settingsSaveFailedPopup": {
+    "message": "Settings save failed",
+    "description": "Popup settings save failed"
+  },
+  "settingsSavedPopup": {
+    "message": "Settings saved",
+    "description": "Popup settings save success"
+  },
+  "settingsSavedLocalPopup": {
+    "message": "Settings saved (local)",
+    "description": "Popup local settings save"
+  },
+  "settingsLoadFailedPopup": {
+    "message": "Settings load failed",
+    "description": "Popup settings load failed"
+  },
+  "activated": {
+    "message": "Activated",
+    "description": "Activated status"
+  },
+  "deactivated": {
+    "message": "Deactivated",
+    "description": "Deactivated status"
+  },
+  "localMode": {
+    "message": "Local mode",
+    "description": "Local mode status"
   }
 }

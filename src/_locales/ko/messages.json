@@ -82,5 +82,345 @@
   "positionBottomRight": {
     "message": "오른쪽 아래",
     "description": "오른쪽 아래 위치 옵션"
+  },
+  "backgroundScriptLoaded": {
+    "message": "Elements Position Drag Overlay - 백그라운드 스크립트 로드됨",
+    "description": "백그라운드 스크립트 로드 메시지"
+  },
+  "contentScriptLoaded": {
+    "message": "Elements Position Drag Overlay - 콘텐츠 스크립트 로드됨",
+    "description": "콘텐츠 스크립트 로드 메시지"
+  },
+  "cannotInjectScript": {
+    "message": "이 페이지에서는 콘텐츠 스크립트를 주입할 수 없습니다:",
+    "description": "스크립트 주입 불가 메시지"
+  },
+  "messageError": {
+    "message": "콘텐츠 스크립트에 메시지를 보낼 수 없습니다:",
+    "description": "메시지 전송 오류"
+  },
+  "extensionInstalled": {
+    "message": "확장 프로그램 설치/업데이트:",
+    "description": "확장 프로그램 설치 메시지"
+  },
+  "contentScriptInjected": {
+    "message": "콘텐츠 스크립트가 성공적으로 주입되었습니다",
+    "description": "콘텐츠 스크립트 주입 성공 메시지"
+  },
+  "contentScriptAlreadyExists": {
+    "message": "콘텐츠 스크립트가 이미 존재하거나 주입할 수 없습니다",
+    "description": "콘텐츠 스크립트 주입 실패 메시지"
+  },
+  "extensionDisabled": {
+    "message": "확장 기능이 비활성화되어 있습니다. 초기화를 중단합니다.",
+    "description": "확장 기능 비활성화 메시지"
+  },
+  "toggleReceived": {
+    "message": "토글 명령을 받았습니다",
+    "description": "토글 명령 수신 메시지"
+  },
+  "extensionToggled": {
+    "message": "확장 기능 토글:",
+    "description": "확장 기능 토글 메시지"
+  },
+  "extensionActivated": {
+    "message": "🔛 확장 기능 활성화됨",
+    "description": "확장 기능 활성화 메시지"
+  },
+  "extensionDeactivated": {
+    "message": "🔕 확장 기능 비활성화됨",
+    "description": "확장 기능 비활성화 메시지"
+  },
+  "settingsLoaded": {
+    "message": "설정 로드됨:",
+    "description": "설정 로드 메시지"
+  },
+  "destroyingDragSystem": {
+    "message": "드래그 시스템 해제 중...",
+    "description": "드래그 시스템 해제 메시지"
+  },
+  "initializingDragSystem": {
+    "message": "확장 프로그램용 드래그 시스템 초기화 중...",
+    "description": "드래그 시스템 초기화 메시지"
+  },
+  "dragSystemInitialized": {
+    "message": "드래그 시스템이 성공적으로 초기화되었습니다!",
+    "description": "드래그 시스템 초기화 완료 메시지"
+  },
+  "dragNotAllowed": {
+    "message": "❌ 드래그 불가능! 이 요소는 position: {position}입니다",
+    "description": "드래그 불가능 토스트 메시지"
+  },
+  "dragStart": {
+    "message": "🎯 드래그 시작!",
+    "description": "드래그 시작 토스트 메시지"
+  },
+  "dragComplete": {
+    "message": "✅ 드래그 완료!",
+    "description": "드래그 완료 토스트 메시지"
+  },
+  "demoScriptLoaded": {
+    "message": "Elements Position Drag Overlay - 데모 스크립트 로드됨",
+    "description": "데모 스크립트 로드 메시지"
+  },
+  "initializingDemo": {
+    "message": "데모 드래그 시스템 초기화 중...",
+    "description": "데모 초기화 메시지"
+  },
+  "optionsTitle": {
+    "message": "Elements Position Overlay - 고급 설정",
+    "description": "옵션 페이지 제목"
+  },
+  "themeToggleTitle": {
+    "message": "다크모드/라이트모드 전환",
+    "description": "테마 토글 버튼 제목"
+  },
+  "advancedSettings": {
+    "message": "고급 설정 및 상세 옵션",
+    "description": "옵션 페이지 부제목"
+  },
+  "advancedOverlaySettings": {
+    "message": "고급 오버레이 설정",
+    "description": "고급 오버레이 설정 섹션 제목"
+  },
+  "toastPosition": {
+    "message": "토스트 메시지 위치:",
+    "description": "토스트 위치 라벨"
+  },
+  "toastPositionDescription": {
+    "message": "알림 메시지가 표시되는 위치를 설정합니다",
+    "description": "토스트 위치 설명"
+  },
+  "usageAndInfo": {
+    "message": "사용법 및 정보",
+    "description": "사용법 섹션 제목"
+  },
+  "howToUse": {
+    "message": "📖 사용 방법",
+    "description": "사용 방법 제목"
+  },
+  "ctrlDrag": {
+    "message": "Ctrl + 드래그: position: absolute인 요소를 이동",
+    "description": "Ctrl+드래그 사용법"
+  },
+  "ctrlHover": {
+    "message": "Ctrl + 호버: 드래그 가능한 요소 미리보기",
+    "description": "Ctrl+호버 사용법"
+  },
+  "escapeKey": {
+    "message": "Escape: 좌표 오버레이 숨기기",
+    "description": "Escape 키 사용법"
+  },
+  "limitations": {
+    "message": "⚠️ 제한사항",
+    "description": "제한사항 제목"
+  },
+  "absoluteOnly": {
+    "message": "position: absolute인 요소만 드래그 가능",
+    "description": "절대 위치 요소만 드래그 가능"
+  },
+  "otherPositions": {
+    "message": "relative, static, fixed 요소는 에러 메시지 표시",
+    "description": "다른 위치 요소 제한"
+  },
+  "layoutProtection": {
+    "message": "레이아웃 보호를 위한 안전 장치",
+    "description": "레이아웃 보호 설명"
+  },
+  "technicalInfo": {
+    "message": "ℹ️ 기술 정보",
+    "description": "기술 정보 제목"
+  },
+  "version": {
+    "message": "버전:",
+    "description": "버전 라벨"
+  },
+  "manifest": {
+    "message": "Manifest:",
+    "description": "매니페스트 라벨"
+  },
+  "permissions": {
+    "message": "권한:",
+    "description": "권한 라벨"
+  },
+  "mainSettings": {
+    "message": "주요 설정:",
+    "description": "주요 설정 라벨"
+  },
+  "popupChangeable": {
+    "message": "팝업에서 변경 가능",
+    "description": "팝업에서 변경 가능 설명"
+  },
+  "saveSettings": {
+    "message": "💾 설정 저장",
+    "description": "설정 저장 버튼"
+  },
+  "resetToDefault": {
+    "message": "🔄 기본값으로 초기화",
+    "description": "기본값 초기화 버튼"
+  },
+  "homepage": {
+    "message": "🏠 홈페이지",
+    "description": "홈페이지 버튼"
+  },
+  "changeSettings": {
+    "message": "⚙️ 설정을 변경하세요",
+    "description": "설정 변경 안내"
+  },
+  "toastTopRight": {
+    "message": "우측 상단",
+    "description": "토스트 우측 상단 위치"
+  },
+  "toastTopLeft": {
+    "message": "좌측 상단",
+    "description": "토스트 좌측 상단 위치"
+  },
+  "toastBottomRight": {
+    "message": "우측 하단",
+    "description": "토스트 우측 하단 위치"
+  },
+  "toastBottomLeft": {
+    "message": "좌측 하단",
+    "description": "토스트 좌측 하단 위치"
+  },
+  "settingsSaveFailed": {
+    "message": "설정 저장 실패",
+    "description": "설정 저장 실패 메시지"
+  },
+  "settingsSaved": {
+    "message": "설정이 저장되었습니다!",
+    "description": "설정 저장 성공 메시지"
+  },
+  "settingsSavedLocal": {
+    "message": "설정 저장됨 (로컬)",
+    "description": "로컬 설정 저장 메시지"
+  },
+  "settingsLoadFailed": {
+    "message": "설정 로드 실패",
+    "description": "설정 로드 실패 메시지"
+  },
+  "settingsLoaded": {
+    "message": "설정을 불러왔습니다",
+    "description": "설정 로드 성공 메시지"
+  },
+  "settingsLoadedLocal": {
+    "message": "설정 로드됨 (로컬)",
+    "description": "로컬 설정 로드 메시지"
+  },
+  "resetConfirm": {
+    "message": "토스트 위치를 기본값으로 초기화하시겠습니까?",
+    "description": "초기화 확인 메시지"
+  },
+  "resetSuccess": {
+    "message": "기본값으로 초기화되었습니다!",
+    "description": "초기화 성공 메시지"
+  },
+  "saving": {
+    "message": "저장 중...",
+    "description": "저장 중 메시지"
+  },
+  "unsavedChanges": {
+    "message": "저장되지 않은 변경사항이 있습니다.",
+    "description": "저장되지 않은 변경사항 경고"
+  },
+  "popupMainTitle": {
+    "message": "🛠 Elements Position Drag Overlay",
+    "description": "팝업 메인 타이틀"
+  },
+  "quickSettings": {
+    "message": "⚡ 빠른 설정",
+    "description": "빠른 설정 섹션 제목"
+  },
+  "showToastMessages": {
+    "message": "알림 메시지 표시",
+    "description": "알림 메시지 표시 체크박스"
+  },
+  "keepCoordinatesAfterDrag": {
+    "message": "드래그 후 좌표 유지",
+    "description": "드래그 후 좌표 유지 체크박스"
+  },
+  "hoverHighlight": {
+    "message": "호버 하이라이트",
+    "description": "호버 하이라이트 체크박스"
+  },
+  "coordinatesPosition": {
+    "message": "좌표 위치:",
+    "description": "좌표 위치 라벨"
+  },
+  "highlightColorLabel": {
+    "message": "하이라이트 색상:",
+    "description": "하이라이트 색상 라벨"
+  },
+  "vueGreen": {
+    "message": "Vue 그린",
+    "description": "Vue 그린 색상"
+  },
+  "vueDarkGreen": {
+    "message": "Vue 다크그린",
+    "description": "Vue 다크그린 색상"
+  },
+  "vueDark": {
+    "message": "Vue 다크",
+    "description": "Vue 다크 색상"
+  },
+  "emerald": {
+    "message": "에메랄드",
+    "description": "에메랄드 색상"
+  },
+  "cyan": {
+    "message": "시안",
+    "description": "시안 색상"
+  },
+  "usageGuide": {
+    "message": "📖 사용법",
+    "description": "사용법 섹션 제목"
+  },
+  "ctrlDragUsage": {
+    "message": "요소 이동 (Mac: Cmd+드래그)",
+    "description": "Ctrl+드래그 사용법 설명"
+  },
+  "ctrlHoverUsage": {
+    "message": "미리보기 (Mac: Cmd+호버)",
+    "description": "Ctrl+호버 사용법 설명"
+  },
+  "escapeUsage": {
+    "message": "좌표 숨기기",
+    "description": "Escape 키 사용법 설명"
+  },
+  "ready": {
+    "message": "✅ 준비됨",
+    "description": "준비됨 상태 메시지"
+  },
+  "madeBy": {
+    "message": "Made by 수민",
+    "description": "제작자 정보"
+  },
+  "settingsSaveFailedPopup": {
+    "message": "설정 저장 실패",
+    "description": "팝업 설정 저장 실패"
+  },
+  "settingsSavedPopup": {
+    "message": "설정 저장됨",
+    "description": "팝업 설정 저장 성공"
+  },
+  "settingsSavedLocalPopup": {
+    "message": "설정 저장됨 (로컬)",
+    "description": "팝업 로컬 설정 저장"
+  },
+  "settingsLoadFailedPopup": {
+    "message": "설정 로드 실패",
+    "description": "팝업 설정 로드 실패"
+  },
+  "activated": {
+    "message": "활성화됨",
+    "description": "활성화 상태"
+  },
+  "deactivated": {
+    "message": "비활성화됨",
+    "description": "비활성화 상태"
+  },
+  "localMode": {
+    "message": "로컬 모드",
+    "description": "로컬 모드 상태"
   }
 }

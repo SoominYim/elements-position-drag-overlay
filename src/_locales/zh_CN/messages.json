@@ -82,5 +82,237 @@
   "positionBottomRight": {
     "message": "右下",
     "description": "右下位置选项"
+  },
+  "backgroundScriptLoaded": {
+    "message": "Elements Position Drag Overlay - 后台脚本已加载",
+    "description": "后台脚本加载消息"
+  },
+  "contentScriptLoaded": {
+    "message": "Elements Position Drag Overlay - 内容脚本已加载",
+    "description": "内容脚本加载消息"
+  },
+  "cannotInjectScript": {
+    "message": "无法在此页面注入内容脚本：",
+    "description": "无法注入脚本消息"
+  },
+  "messageError": {
+    "message": "无法向内容脚本发送消息：",
+    "description": "消息发送错误"
+  },
+  "extensionInstalled": {
+    "message": "扩展程序已安装/更新：",
+    "description": "扩展程序安装消息"
+  },
+  "extensionDisabled": {
+    "message": "扩展功能已禁用。中止初始化。",
+    "description": "扩展功能禁用消息"
+  },
+  "toggleReceived": {
+    "message": "收到切换命令",
+    "description": "切换命令接收消息"
+  },
+  "extensionToggled": {
+    "message": "扩展功能已切换：",
+    "description": "扩展功能切换消息"
+  },
+  "extensionActivated": {
+    "message": "🔛 扩展功能已激活",
+    "description": "扩展功能激活消息"
+  },
+  "extensionDeactivated": {
+    "message": "🔕 扩展功能已停用",
+    "description": "扩展功能停用消息"
+  },
+  "settingsLoaded": {
+    "message": "设置已加载：",
+    "description": "设置加载消息"
+  },
+  "destroyingDragSystem": {
+    "message": "正在销毁拖拽系统...",
+    "description": "销毁拖拽系统消息"
+  },
+  "initializingDragSystem": {
+    "message": "正在初始化扩展程序拖拽系统...",
+    "description": "初始化拖拽系统消息"
+  },
+  "dragSystemInitialized": {
+    "message": "拖拽系统初始化成功！",
+    "description": "拖拽系统初始化完成消息"
+  },
+  "dragNotAllowed": {
+    "message": "❌ 无法拖拽！此元素的position: {position}",
+    "description": "无法拖拽提示消息"
+  },
+  "dragStart": {
+    "message": "🎯 开始拖拽！",
+    "description": "开始拖拽提示消息"
+  },
+  "dragComplete": {
+    "message": "✅ 拖拽完成！",
+    "description": "拖拽完成提示消息"
+  },
+  "demoScriptLoaded": {
+    "message": "Elements Position Drag Overlay - 演示脚本已加载",
+    "description": "演示脚本加载消息"
+  },
+  "initializingDemo": {
+    "message": "正在初始化演示拖拽系统...",
+    "description": "演示初始化消息"
+  },
+  "optionsTitle": {
+    "message": "Elements Position Overlay - 高级设置",
+    "description": "选项页面标题"
+  },
+  "themeToggleTitle": {
+    "message": "切换深色/浅色模式",
+    "description": "主题切换按钮标题"
+  },
+  "advancedSettings": {
+    "message": "高级设置和详细选项",
+    "description": "选项页面副标题"
+  },
+  "advancedOverlaySettings": {
+    "message": "高级覆盖层设置",
+    "description": "高级覆盖层设置部分标题"
+  },
+  "toastPosition": {
+    "message": "提示消息位置:",
+    "description": "提示位置标签"
+  },
+  "toastPositionDescription": {
+    "message": "设置通知消息显示的位置",
+    "description": "提示位置描述"
+  },
+  "usageAndInfo": {
+    "message": "使用方法和信息",
+    "description": "使用方法部分标题"
+  },
+  "howToUse": {
+    "message": "📖 使用方法",
+    "description": "使用方法标题"
+  },
+  "ctrlDrag": {
+    "message": "Ctrl + 拖拽: 移动position: absolute的元素",
+    "description": "Ctrl+拖拽使用方法"
+  },
+  "ctrlHover": {
+    "message": "Ctrl + 悬停: 预览可拖拽元素",
+    "description": "Ctrl+悬停使用方法"
+  },
+  "escapeKey": {
+    "message": "Escape: 隐藏坐标覆盖层",
+    "description": "Escape键使用方法"
+  },
+  "limitations": {
+    "message": "⚠️ 限制条件",
+    "description": "限制条件标题"
+  },
+  "absoluteOnly": {
+    "message": "只有position: absolute的元素可以拖拽",
+    "description": "绝对定位元素限制"
+  },
+  "otherPositions": {
+    "message": "relative、static、fixed元素显示错误消息",
+    "description": "其他定位元素限制"
+  },
+  "layoutProtection": {
+    "message": "布局保护的安全机制",
+    "description": "布局保护描述"
+  },
+  "technicalInfo": {
+    "message": "ℹ️ 技术信息",
+    "description": "技术信息标题"
+  },
+  "version": {
+    "message": "版本:",
+    "description": "版本标签"
+  },
+  "manifest": {
+    "message": "清单:",
+    "description": "清单标签"
+  },
+  "permissions": {
+    "message": "权限:",
+    "description": "权限标签"
+  },
+  "mainSettings": {
+    "message": "主要设置:",
+    "description": "主要设置标签"
+  },
+  "popupChangeable": {
+    "message": "可在弹窗中更改",
+    "description": "弹窗可更改描述"
+  },
+  "saveSettings": {
+    "message": "💾 保存设置",
+    "description": "保存设置按钮"
+  },
+  "resetToDefault": {
+    "message": "🔄 重置为默认值",
+    "description": "重置为默认值按钮"
+  },
+  "homepage": {
+    "message": "🏠 主页",
+    "description": "主页按钮"
+  },
+  "changeSettings": {
+    "message": "⚙️ 请更改设置",
+    "description": "更改设置消息"
+  },
+  "toastTopRight": {
+    "message": "右上",
+    "description": "提示右上位置"
+  },
+  "toastTopLeft": {
+    "message": "左上",
+    "description": "提示左上位置"
+  },
+  "toastBottomRight": {
+    "message": "右下",
+    "description": "提示右下位置"
+  },
+  "toastBottomLeft": {
+    "message": "左下",
+    "description": "提示左下位置"
+  },
+  "settingsSaveFailed": {
+    "message": "设置保存失败",
+    "description": "设置保存失败消息"
+  },
+  "settingsSaved": {
+    "message": "设置已保存！",
+    "description": "设置保存成功消息"
+  },
+  "settingsSavedLocal": {
+    "message": "设置已保存（本地）",
+    "description": "本地设置保存消息"
+  },
+  "settingsLoadFailed": {
+    "message": "设置加载失败",
+    "description": "设置加载失败消息"
+  },
+  "settingsLoaded": {
+    "message": "设置已加载",
+    "description": "设置加载成功消息"
+  },
+  "settingsLoadedLocal": {
+    "message": "设置已加载（本地）",
+    "description": "本地设置加载消息"
+  },
+  "resetConfirm": {
+    "message": "是否将提示位置重置为默认值？",
+    "description": "重置确认消息"
+  },
+  "resetSuccess": {
+    "message": "已重置为默认值！",
+    "description": "重置成功消息"
+  },
+  "saving": {
+    "message": "保存中...",
+    "description": "保存中消息"
+  },
+  "unsavedChanges": {
+    "message": "有未保存的更改。",
+    "description": "未保存更改警告"
   }
 }
