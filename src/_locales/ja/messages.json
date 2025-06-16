@@ -131,10 +131,6 @@
     "message": "🔕 拡張機能が無効になりました",
     "description": "拡張機能無効化メッセージ"
   },
-  "settingsLoaded": {
-    "message": "設定が読み込まれました：",
-    "description": "設定読み込みメッセージ"
-  },
   "destroyingDragSystem": {
     "message": "ドラッグシステムを破棄中...",
     "description": "ドラッグシステム破棄メッセージ"
