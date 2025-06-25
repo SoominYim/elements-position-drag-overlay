@@ -12,13 +12,13 @@ Ctrl+드래그로 웹 요소를 이동하면서 CSS position 값(left, top, righ
 - **크롬 확장 + 웹 데모**: 모든 웹사이트에서 사용 가능하며 독립 실행형 데모도 제공
 - **TypeScript 기반**: 안정적인 코드와 개발 경험
 
-## 빠른 시작
+## 시작하기
 
-> **중요**: 이 레포지토리는 소스 코드만 포함합니다. 사용하려면 반드시 빌드가 필요합니다!
+> **참고**: 소스 코드를 사용하려면 빌드 과정이 필요합니다.
 
 ### 설치 및 빌드
 
-GitHub에서 클론한 후 다음 단계를 따라주세요:
+GitHub에서 클론 후 빌드:
 
 <details>
 <summary><strong>Yarn (권장)</strong></summary>
@@ -91,7 +91,7 @@ pnpm test:run
 
 ### 웹 데모 실행
 
-**CORS 정책으로 인해 로컬 서버 실행이 필요합니다!**
+CORS 정책으로 인해 로컬 서버가 필요합니다.
 
 <details>
 <summary><strong>방법 1: 내장 Node.js 서버 (권장)</strong></summary>
@@ -105,7 +105,7 @@ npm run build       # 빌드
 npm run serve       # http://localhost:3000 서버 실행
 ```
 
-**접속**: http://localhost:3000
+접속: http://localhost:3000
 
 </details>
 
@@ -125,7 +125,7 @@ cd dist
 python -m http.server 8000
 ```
 
-**접속**: http://localhost:8000
+접속: http://localhost:8000
 
 </details>
 
@@ -149,9 +149,9 @@ serve dist
 
 </details>
 
-> ⚠️ **왜 file:// 로 안 되나요?** 브라우저의 CORS 보안 정책으로 인해 `file://` 프로토콜에서는 JavaScript 모듈 로드가 차단됩니다.
+> **왜 file:// 로 안 되나요?** 브라우저의 CORS 보안 정책으로 인해 `file://` 프로토콜에서는 JavaScript 모듈 로드가 차단됩니다.
 
-**사용법**: Ctrl + 드래그로 파란색 박스를 움직여보세요!
+Ctrl + 드래그로 파란색 박스를 움직여보세요.
 
 ### 크롬 확장으로 설치 (메인 기능)
 
@@ -165,7 +165,7 @@ serve dist
 5. **dist/** 폴더 선택
 6. 설치 완료!
 
-**사용법**: 이제 **모든 웹사이트**에서 Ctrl+드래그 사용 가능합니다!
+이제 모든 웹사이트에서 Ctrl+드래그를 사용할 수 있습니다.
 
 ## 사용법
 
@@ -184,7 +184,7 @@ serve dist
 
 ## 테스트
 
-### 빠른 테스트 실행
+### 테스트 실행
 
 | 패키지 매니저 | 한번 실행          | 감시 모드   | UI 모드           |
 | ------------- | ------------------ | ----------- | ----------------- |
@@ -192,21 +192,19 @@ serve dist
 | **npm**       | `npm run test:run` | `npm test`  | `npm run test:ui` |
 | **pnpm**      | `pnpm test:run`    | `pnpm test` | `pnpm test:ui`    |
 
-**현재 테스트 상태**: ✅ 3/3 통과 (getCssPosition 함수 테스트)
+현재 테스트: 3/3 통과
 
-## 🔧 기술 스택
+## 기술 스택
 
-- **TypeScript**: 타입 안전성과 개발자 경험
-- **ESM**: 최신 모듈 시스템
-- **다중 패키지 매니저**: npm, yarn, pnpm 모두 지원
-- **Vitest**: Jest보다 빠른 단위 테스트 프레임워크
-- **Chrome Extension Manifest V3**: 최신 확장 API
-- **Sharp**: 고성능 SVG → PNG 아이콘 변환
-- **CSS Grid/Flexbox**: 반응형 UI 레이아웃
+- **TypeScript**: 타입 안전성
+- **ESM**: ES 모듈 시스템
+- **다중 패키지 매니저**: npm, yarn, pnpm 지원
+- **Vitest**: 단위 테스트
+- **Chrome Extension Manifest V3**: 확장 API
+- **Sharp**: SVG → PNG 변환
+- **CSS Grid/Flexbox**: 반응형 레이아웃
 
-## 🎯 개발 워크플로우
-
-선택한 패키지 매니저로 진행하세요:
+## 개발 워크플로우
 
 <details>
 <summary><strong>Yarn 워크플로우</strong></summary>
@@ -277,12 +275,7 @@ start dist/index.html      # 빌드된 버전
 
 </details>
 
-## 📸 스크린샷
-
-![웹 데모](src/icons/screenshot1.png)
-_웹 데모: Alt+드래그로 요소 이동 시 실시간 좌표 표시_
-
-## 🤝 기여하기
+## 기여하기
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -292,65 +285,63 @@ _웹 데모: Alt+드래그로 요소 이동 시 실시간 좌표 표시_
 
 ### 개발 가이드라인
 
-- **코드 스타일**: TypeScript strict 모드 사용
-- **테스트**: 새 기능은 반드시 테스트 코드 작성
-- **빌드**: 선택한 패키지 매니저로 `build` 명령 성공 확인
-- **브라우저 호환성**: Chrome Extension Manifest V3 기준
-- **패키지 매니저**: npm, yarn, pnpm 모두 호환 유지
+- **코드 스타일**: TypeScript strict 모드
+- **테스트**: 새 기능에는 테스트 코드 작성
+- **빌드**: `build` 명령 성공 확인
+- **브라우저 호환성**: Chrome Extension Manifest V3
+- **패키지 매니저**: npm, yarn, pnpm 호환
 
 ### 패키지 매니저별 특징
 
-| 패키지 매니저 | 장점                      | 추천 상황                     |
+| 패키지 매니저 | 장점                      | 언제 쓰면 좋을까              |
 | ------------- | ------------------------- | ----------------------------- |
-| **Yarn**      | 안정성, 워크스페이스 지원 | 대부분의 프로젝트 (현재 설정) |
-| **npm**       | 기본 제공, 광범위한 지원  | Node.js 기본 환경 선호 시     |
-| **pnpm**      | 디스크 효율성, 빠른 설치  | 모노레포, 성능 중시 시        |
+| **Yarn**      | 안정성, 워크스페이스 지원 | 일반적인 프로젝트 (현재 설정) |
+| **npm**       | 기본 제공, 광범위한 지원  | Node.js 기본 환경             |
+| **pnpm**      | 디스크 효율성, 빠른 설치  | 모노레포, 성능 중시           |
 
-## 📄 라이센스
+## 라이센스
 
-**MIT License** | Copyright (c) 2024 soomin
+MIT License | Copyright (c) 2024 soomin
 
-이 프로젝트는 MIT 라이선스 하에 공개되어 있습니다. 자유롭게 사용, 수정, 배포할 수 있습니다.
+MIT 라이선스로 공개되어 있어서 자유롭게 사용, 수정, 배포할 수 있습니다.
 
-### ✅ 허용 사항
+### 허용 사항
 
-- ✅ **상업적 사용**: 회사 프로젝트에서 자유롭게 사용
-- ✅ **수정**: 코드 변경 및 개선
-- ✅ **배포**: 수정 버전 포함하여 자유롭게 공유
-- ✅ **개인 사용**: 개인 프로젝트에서 제한 없이 사용
+- 상업적 사용
+- 코드 수정 및 개선
+- 배포 (수정 버전 포함)
+- 개인 프로젝트 사용
 
-### 📝 라이선스 조건
+### 조건
 
-- 📝 **저작권 표시**: 원본 저작권 및 라이선스 표시 유지
-- 📝 **책임 제한**: 작성자는 소프트웨어 사용으로 인한 손해에 대해 책임지지 않음
+- 원본 저작권 표시 유지
+- 작성자는 소프트웨어 사용으로 인한 손해에 대해 책임지지 않음
 
 자세한 내용은 `LICENSE` 파일을 확인하세요.
 
-## 🔗 링크
+## 링크
 
 - [GitHub Repository](https://github.com/SoominYim/elements-position-drag-overlay)
 - [Issues](https://github.com/SoominYim/elements-position-drag-overlay/issues)
 - [Chrome Web Store](https://chromewebstore.google.com/detail/elements-position-drag-ov/hhcokjpdklpgebgklpelpkekgiojnjca)
 - [웹 데모 바로가기](https://elements-position-drag-overlay.vercel.app/)
 
-## 🚀 로드맵
+## 로드맵
 
 - [x] Chrome Web Store 출시
 - [ ] Firefox 확장 지원
-- [ ] 더 많은 CSS 속성 표시 (margin, padding)
-- [ ] 테마 커스터마이징
-- [ ] 키보드 단축키 커스터마이징
+- [ ] margin, padding 표시
+- [ ] 테마 설정
+- [ ] 키보드 단축키 설정
 - [ ] Bun 패키지 매니저 지원
 
 ---
 
-**💡 개발자를 위한 생산성 도구를 만들어 나가고 있습니다. ⭐ 별표를 눌러주세요!**
+도움이 되셨다면 ⭐ 별표 부탁드립니다!
 
-**즉시 체험**: `src/index.html`을 열어서 Alt+드래그로 파란색 박스를 움직여보세요! 🎯✨
+## 빌드 방법
 
-## 🚀 빌드 방법
-
-### 간단한 빌드 📦
+### 간단한 빌드
 
 ```bash
 npm run build
@@ -360,10 +351,10 @@ yarn build
 pnpm build
 ```
 
-### 상세 빌드 가이드 📦
+### 상세 빌드 가이드
 
 <details>
-<summary><strong>🎁 npm 사용하기</strong></summary>
+<summary><strong>npm 사용</strong></summary>
 
 ```bash
 # 1. 레포지토리 클론
@@ -386,7 +377,7 @@ npm run test:run
 </details>
 
 <details>
-<summary><strong>🧶 Yarn 사용하기</strong></summary>
+<summary><strong>Yarn 사용</strong></summary>
 
 ```bash
 # 1. 레포지토리 클론
@@ -409,7 +400,7 @@ yarn test:run
 </details>
 
 <details>
-<summary><strong>📦 pnpm 사용하기</strong></summary>
+<summary><strong>pnpm 사용</strong></summary>
 
 ```bash
 # 1. 레포지토리 클론
