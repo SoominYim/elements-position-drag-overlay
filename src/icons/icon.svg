@@ -53,12 +53,12 @@
     
     <!-- 내부 어두운 사각형 (흰색으로 변경해서 대비 높이기) -->
     <rect x="-18" y="-18" width="36" height="36" rx="4" fill="url(#whiteColor)" stroke="url(#darkGreen)" stroke-width="2"/>
-    
+  
     <!-- 내부 대각선 화살표 (어두운 색으로 대비) -->
     <g fill="url(#darkGreen)">
       <path d="M5,-5 L18,-18 L14,-18 L14,-22 L22,-22 L22,-14 L18,-14 L18,-18 L5,-5 Z"/>
-    </g>
-    
+  </g>
+  
     <!-- 4방향 화살표들 (더 밝은 Vue 색상으로) -->
     <g fill="url(#veryBrightVue)" stroke="url(#darkGreen)" stroke-width="2">
       <!-- 위쪽 화살표 -->
@@ -72,7 +72,7 @@
       
       <!-- 오른쪽 화살표 -->
       <path d="M70,0 L55,12 L55,6 L40,6 L40,-6 L55,-6 L55,-12 Z"/>
-    </g>
+  </g>
     
   </g>
   

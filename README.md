@@ -4,8 +4,6 @@
 
 Ctrl+드래그로 웹 요소를 이동하면서 CSS position 값(left, top, right, bottom)을 실시간으로 확인할 수 있는 크롬 확장 프로그램입니다. 개발자, 디자이너, QA 작업에 유용합니다.
 
-[Demo](https://elements-position-drag-overlay.vercel.app/)
-
 ## 주요 기능
 
 - **실시간 좌표 표시**: 드래그하는 동안 left, top, right, bottom 값을 실시간으로 확인
@@ -332,12 +330,12 @@ _웹 데모: Alt+드래그로 요소 이동 시 실시간 좌표 표시_
 
 - [GitHub Repository](https://github.com/SoominYim/elements-position-drag-overlay)
 - [Issues](https://github.com/SoominYim/elements-position-drag-overlay/issues)
-- [Chrome Web Store](#) (출시 예정)
-- [웹 데모 바로가기](./src/index.html)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/elements-position-drag-ov/hhcokjpdklpgebgklpelpkekgiojnjca)
+- [웹 데모 바로가기](https://elements-position-drag-overlay.vercel.app/)
 
 ## 🚀 로드맵
 
-- [ ] Chrome Web Store 출시
+- [x] Chrome Web Store 출시
 - [ ] Firefox 확장 지원
 - [ ] 더 많은 CSS 속성 표시 (margin, padding)
 - [ ] 테마 커스터마이징
