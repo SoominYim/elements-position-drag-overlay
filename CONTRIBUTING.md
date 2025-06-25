@@ -1,14 +1,14 @@
-# 🤝 Contributing Guide
+# Contributing Guide
 
 Elements Position Overlay 프로젝트에 기여해주셔서 감사합니다!
 
-## 🚀 개발 환경 설정
+## 개발 환경 설정
 
 ### 필수 요구사항
 
-- **Node.js** ≥16.0.0
-- **Git**
-- 선호하는 패키지 매니저 (**pnpm** 권장)
+- Node.js ≥16.0.0
+- Git
+- 패키지 매니저 (pnpm 권장)
 
 ### 로컬 개발 설정
 
@@ -33,14 +33,14 @@ pnpm build
 pnpm test:run
 ```
 
-## 🔄 개발 워크플로우
+## 개발 워크플로우
 
 ### 브랜치 전략
 
-- **main**: 안정 버전
-- **feature/기능명**: 새 기능 개발
-- **fix/버그명**: 버그 수정
-- **docs/문서명**: 문서 업데이트
+- main: 안정 버전
+- feature/기능명: 새 기능 개발
+- fix/버그명: 버그 수정
+- docs/문서명: 문서 업데이트
 
 ### 개발 단계
 
@@ -64,14 +64,14 @@ git commit -m "feat: add amazing feature"
 git push origin feature/amazing-feature
 ```
 
-## 📝 코딩 스타일
+## 코딩 스타일
 
 ### TypeScript 가이드라인
 
-- **Strict 모드** 필수 (`tsconfig.json`)
-- **ESM 모듈** 사용
-- **명확한 타입 정의**
-- **JSDoc 주석** 권장
+- Strict 모드 필수 (`tsconfig.json`)
+- ESM 모듈 사용
+- 명확한 타입 정의
+- JSDoc 주석 권장
 
 ### 파일 구조
 
@@ -91,9 +91,9 @@ function drag(el: any) {
 
 ### 테스트 작성
 
-- **모든 새 기능**에 테스트 추가
-- **Vitest** 프레임워크 사용
-- **단위 테스트** 우선, 통합 테스트 선택
+- 모든 새 기능에 테스트 추가
+- Vitest 프레임워크 사용
+- 단위 테스트 우선, 통합 테스트 선택
 
 ```typescript
 // src/__tests__/newFeature.test.ts
@@ -107,13 +107,13 @@ describe("newFeature", () => {
 });
 ```
 
-## 🐛 버그 리포트
+## 버그 리포트
 
 ### 버그 발견 시
 
 1. [Issues](https://github.com/SoominYim/elements-position-drag-overlay/issues) 검색
-2. 기존 이슈가 없다면 **새 이슈 생성**
-3. **빌드 문제**라면 [빌드 문제 템플릿](.github/ISSUE_TEMPLATE/build-problem.md) 사용
+2. 기존 이슈가 없다면 새 이슈 생성
+3. 빌드 문제라면 [빌드 문제 템플릿](.github/ISSUE_TEMPLATE/build-problem.md) 사용
 
 ### 버그 수정 시
 
@@ -129,23 +129,23 @@ pnpm build
 # 5. PR 생성
 ```
 
-## 📚 문서 기여
+## 문서 기여
 
 ### 문서 종류
 
-- **README.md**: 전체 프로젝트 소개
-- **PACKAGE_MANAGER.md**: 패키지 매니저 가이드
-- **CHROME_EXTENSION_GUIDE.md**: 크롬 확장 설치
-- **TROUBLESHOOTING.md**: 문제 해결
+- README.md: 전체 프로젝트 소개
+- PACKAGE_MANAGER.md: 패키지 매니저 가이드
+- CHROME_EXTENSION_GUIDE.md: 크롬 확장 설치
+- TROUBLESHOOTING.md: 문제 해결
 
 ### 문서 스타일
 
-- **명확한 제목** (이모지 사용 권장)
-- **단계별 가이드**
-- **코드 예시** 포함
-- **한국어** 우선, 영어 병행
+- 명확한 제목
+- 단계별 가이드
+- 코드 예시 포함
+- 한국어 우선, 영어 병행
 
-## 🏗 빌드 시스템
+## 빌드 시스템
 
 ### 스크립트 구조
 
@@ -159,17 +159,17 @@ pnpm build
 
 ### 빌드 결과물 (`dist/`)
 
-- **Git에 포함되지 않음** (`.gitignore`)
-- **사용자가 직접 빌드** 필요
-- **크롬 확장 설치용**
+- Git에 포함되지 않음 (`.gitignore`)
+- 사용자가 직접 빌드 필요
+- 크롬 확장 설치용
 
-## 🔧 패키지 매니저 지원
+## 패키지 매니저 지원
 
 ### 호환성 원칙
 
-- **npm, yarn, pnpm** 모두 지원
-- **크로스 플랫폼** 명령어 사용
-- **Node.js fs API** 우선
+- npm, yarn, pnpm 모두 지원
+- 크로스 플랫폼 명령어 사용
+- Node.js fs API 우선
 
 ### 테스트 방법
 
@@ -180,7 +180,7 @@ yarn build && yarn test:run
 pnpm build && pnpm test:run
 ```
 
-## 📋 Pull Request 가이드
+## Pull Request 가이드
 
 ### PR 체크리스트
 
@@ -213,33 +213,33 @@ pnpm build && pnpm test:run
 Closes #123
 ```
 
-## 🎯 기여 우선순위
+## 기여 우선순위
 
 ### 높은 우선순위
 
-1. **버그 수정**
-2. **테스트 커버리지 증가**
-3. **브라우저 호환성 개선**
-4. **성능 최적화**
+1. 버그 수정
+2. 테스트 커버리지 증가
+3. 브라우저 호환성 개선
+4. 성능 최적화
 
 ### 중간 우선순위
 
-1. **새 기능 추가**
-2. **문서 개선**
-3. **개발자 경험 향상**
+1. 새 기능 추가
+2. 문서 개선
+3. 개발자 경험 향상
 
 ### 낮은 우선순위
 
-1. **코드 리팩토링**
-2. **스타일 변경**
+1. 코드 리팩토링
+2. 스타일 변경
 
-## 🏷 릴리즈 프로세스
+## 릴리즈 프로세스
 
 ### 버전 관리
 
-- **Semantic Versioning** 사용
-- **CHANGELOG.md** 업데이트
-- **Git 태그** 생성
+- Semantic Versioning 사용
+- CHANGELOG.md 업데이트
+- Git 태그 생성
 
 ### 릴리즈 단계
 
@@ -250,6 +250,6 @@ Closes #123
 
 ---
 
-💡 **질문이 있으시면 언제든 [Issues](https://github.com/SoominYim/elements-position-drag-overlay/issues)에 문의해주세요!**
+질문이 있으시면 언제든 [Issues](https://github.com/SoominYim/elements-position-drag-overlay/issues)에 문의해주세요!
 
-🌟 **기여해주셔서 감사합니다!** ⭐
+기여해주셔서 감사합니다!
